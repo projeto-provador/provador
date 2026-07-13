@@ -70,12 +70,18 @@ Legenda esforço (E): S ≤1h · M ≤4h · L = quebrar em subtarefas.
 
 ## ONDA 2 — Máquina de conteúdo (SEO + AGEO contínuo)
 
-- [ ] **2.1 · /conteudo (hub)** — lista + filtro por tema + schema; ISR. `P2 · M`
-- [ ] **2.2 · Pipeline MDX de artigo** — layout answer-first + schema Article/FAQ + autor Curva C (`SPEC §5`, `SEO-AGEO §7`). `P2 · M`
-- [ ] **2.3 · Primeiros 3 artigos** — mirar keywords do ICP + narrativa de mercado (`SEO-AGEO §8`). `P2 · L`
+- [x] **2.1 · /conteudo (hub)** — lista + filtro por tema + schema; ISR. `P2 · M`
+  - feito: hub com lista agrupada por tema (navegável sem JS) + breadcrumbs; SSG. (2026-07-13)
+- [x] **2.2 · Pipeline MDX de artigo** — layout answer-first + schema Article/FAQ + autor Curva C (`SPEC §5`, `SEO-AGEO §7`). `P2 · M`
+  - feito: registry tipado + MDX (remark-gfm) + layout answer-first + Article/FAQPage + autor Curva C + OG por artigo. (2026-07-13)
+- [x] **2.3 · Primeiros 3 artigos** — mirar keywords do ICP + narrativa de mercado (`SEO-AGEO §8`). `P2 · L`
+  - feito: pilotos-que-falham / agente-autonomo-vs-humano-no-loop / service-as-a-software — keywords do ICP, fontes nomeadas (Gartner, MIT NANDA); recomenda-se revisão editorial do owner. (2026-07-13)
 - [ ] **2.4 · Dado proprietário citável** — publicar 1 métrica que só a QuipeAI tem (`SEO-AGEO §9`). `TODO(prova)`. `P2 · M`
-- [ ] **2.5 · Monitoramento AGEO** — rotina de checagem de mention-rate em ChatGPT/Perplexity/AI Overviews (`SEO-AGEO §12`). `P2 · S`
-- [ ] **2.6 · RSS + descoberta** — feed opcional; pings de sitemap. `P2 · S`
+  - bloqueada (2026-07-13): depende de base real do owner — sem número, não publica (CLAUDE §3.6).
+- [x] **2.5 · Monitoramento AGEO** — rotina de checagem de mention-rate em ChatGPT/Perplexity/AI Overviews (`SEO-AGEO §12`). `P2 · S`
+  - feito: rotina documentada em docs/AGEO-MONITORAMENTO.md (queries, motores, gatilhos, registro). (2026-07-13)
+- [x] **2.6 · RSS + descoberta** — feed opcional; pings de sitemap. `P2 · S`
+  - feito: /feed.xml (RSS 2.0) + link alternate no layout; ping = submissão do sitemap no launch. (2026-07-13)
 
 ---
 

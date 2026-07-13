@@ -8,6 +8,8 @@
         "http://localhost:3000/metodo",
         "http://localhost:3000/produtos",
         "http://localhost:3000/founder",
+        "http://localhost:3000/conteudo",
+        "http://localhost:3000/conteudo/service-as-a-software",
         "http://localhost:3000/contato"
       ],
       "numberOfRuns": 1,

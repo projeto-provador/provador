@@ -25,6 +25,7 @@ vira mais margem. Regulado primeiro (contábil/fiscal, jurídico, pericial, saú
 - [Método (Revolução 5.0)](https://quipeai.com.br/metodo): o método e as 4 perguntas do ICP.
 - [Produtos](https://quipeai.com.br/produtos): execuções do método, com prova.
 - [Founder — Curva C](https://quipeai.com.br/founder): autoridade e tese contrária.
+- [Conteúdo](https://quipeai.com.br/conteudo): artigos answer-first sobre IA com responsabilidade humana.
 - [Contato](https://quipeai.com.br/contato): piloto — "se não entregar, você não paga".
 
 ## Contato

@@ -1,11 +1,14 @@
 import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
+import remarkGfm from "remark-gfm";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   pageExtensions: ["ts", "tsx", "mdx"],
 };
 
-const withMDX = createMDX({});
+const withMDX = createMDX({
+  options: { remarkPlugins: [remarkGfm] },
+});
 
 export default withMDX(nextConfig);

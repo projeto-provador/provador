@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   title: "QuipeAI",
   openGraph: { siteName: "QuipeAI", locale: "pt_BR", type: "website" },
   twitter: { card: "summary_large_image" },
+  alternates: {
+    types: { "application/rss+xml": [{ url: "/feed.xml", title: "QuipeAI — Conteúdo" }] },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

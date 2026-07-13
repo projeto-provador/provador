@@ -20,6 +20,18 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       />
     ),
     strong: (props) => <strong {...props} className="font-semibold text-text" />,
+    table: (props) => (
+      <div className="my-6 overflow-x-auto">
+        <table {...props} className="w-full border-collapse text-sm" />
+      </div>
+    ),
+    th: (props) => (
+      <th
+        {...props}
+        className="border-b border-border px-3 py-2 text-left font-display font-semibold text-text"
+      />
+    ),
+    td: (props) => <td {...props} className="border-b border-border px-3 py-2 align-top" />,
     ...components,
   };
 }

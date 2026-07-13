@@ -40,6 +40,32 @@ export function productSchema(produto: ProdutoMeta) {
   };
 }
 
+/** Article — /conteudo/[slug] (SEO-AGEO.md §6). */
+export function articleSchema(artigo: {
+  slug: string;
+  title: string;
+  description: string;
+  publishedAt: string;
+  updatedAt?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: artigo.title,
+    description: artigo.description,
+    url: `${SITE_URL}/conteudo/${artigo.slug}`,
+    datePublished: artigo.publishedAt,
+    dateModified: artigo.updatedAt ?? artigo.publishedAt,
+    inLanguage: "pt-BR",
+    author: {
+      "@type": "Person",
+      name: "Luiz Guilherme Ramos Guimarães",
+      url: `${SITE_URL}/founder`,
+    },
+    publisher: { "@type": "Organization", name: "QuipeAI", url: SITE_URL },
+  };
+}
+
 /** Person — /founder (SEO-AGEO.md §6). */
 export const personSchema = {
   "@context": "https://schema.org",

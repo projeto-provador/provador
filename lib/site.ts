@@ -12,14 +12,12 @@ export const ARCO =
 /** Versão de uma linha da tese (meta/hero) — CONTENT.md §2 */
 export const TESE_UMA_LINHA = "IA que assume o resultado — com um humano que decide e assina.";
 
-/**
- * Navegação principal. Só rotas já publicadas — links mortos são proibidos
- * (CLAUDE.md §7). Falta /conteudo (Onda 2).
- */
+/** Navegação principal — só rotas publicadas (links mortos são proibidos, CLAUDE.md §7). */
 export const NAV_ITEMS: ReadonlyArray<{ href: string; label: string }> = [
   { href: "/metodo", label: "Método" },
   { href: "/produtos", label: "Produtos" },
   { href: "/founder", label: "Founder" },
+  { href: "/conteudo", label: "Conteúdo" },
   { href: "/contato", label: "Contato" },
 ];
 
