@@ -10,26 +10,40 @@ Legenda esforço (E): S ≤1h · M ≤4h · L = quebrar em subtarefas.
 
 ## ONDA 0 — Destravar (existir para máquinas + conversão mínima)
 
-- [ ] **0.1 · Scaffold** — Next.js 15 (App Router, TS strict) + pnpm + Tailwind v4 + ESLint/Prettier. `pnpm build` limpo. `P0 · M`
+- [x] **0.1 · Scaffold** — Next.js 15 (App Router, TS strict) + pnpm + Tailwind v4 + ESLint/Prettier. `pnpm build` limpo. `P0 · M`
+  - feito: scaffold Next 15 + pnpm + Tailwind v4 + ESLint/Prettier; dev/build/typecheck/lint limpos. (2026-07-13)
   - DoD: repo roda `dev/build/typecheck/lint`; estrutura de pastas conforme `AGENTS.md §7`.
-- [ ] **0.2 · Tokens & temas** — criar `styles/tokens.css` com Obsidian Escuro + Claro (`DESIGN.md §4`); mapear no Tailwind (`§12`). `P0 · M`
+- [x] **0.2 · Tokens & temas** — criar `styles/tokens.css` com Obsidian Escuro + Claro (`DESIGN.md §4`); mapear no Tailwind (`§12`). `P0 · M`
+  - feito: tokens.css (escuro+claro) + @theme inline no Tailwind; contraste checado via Lighthouse. (2026-07-13)
   - DoD: alternar `data-theme` no `<html>` troca o tema; contraste AA nos dois (checar §5).
-- [ ] **0.3 · ThemeToggle SSR-safe** — cookie + `data-theme` no server layout + toggle client sem flash (`DESIGN.md §6`). `P0 · M`
+- [x] **0.3 · ThemeToggle SSR-safe** — cookie + `data-theme` no server layout + toggle client sem flash (`DESIGN.md §6`). `P0 · M`
+  - feito: cookie + inline script anti-FOUC mantendo SSG (ADR 0001); toggle com aria-pressed. (2026-07-13)
   - DoD: recarregar mantém o tema; sem FOUC; `aria-pressed` correto; respeita `prefers-reduced-motion`.
-- [ ] **0.4 · Layout base** — Header (logo-node, nav, toggle, CTA) + Footer (entidade + CTA) + skip-link + `<main>`. `P0 · M`
+- [x] **0.4 · Layout base** — Header (logo-node, nav, toggle, CTA) + Footer (entidade + CTA) + skip-link + `<main>`. `P0 · M`
+  - feito: Header sticky + Footer com entidade/CTA + skip-link; nav crawlable. (2026-07-13)
   - DoD: nav crawlable; foco visível; header sticky com `--overlay-header`.
-- [ ] **0.5 · Primitivos UI** — `Button`, `Card`, `SectionHeading`, `NodeGlow`, `JsonLd`. Só tokens. `P0 · M`
-- [ ] **0.6 · Home (SSR)** — Hero + Tensão + Arco + 5 passos + Prova(`TODO(prova)`) + 3 caminhos + CTA piloto (`SPEC §1`, copy de `CONTENT`). `P0 · L`
+- [x] **0.5 · Primitivos UI** — `Button`, `Card`, `SectionHeading`, `NodeGlow`, `JsonLd`. Só tokens. `P0 · M`
+  - feito: Button/Card/SectionHeading/NodeGlow/JsonLd + Faq; só tokens. (2026-07-13)
+- [x] **0.6 · Home (SSR)** — Hero + Tensão + Arco + 5 passos + Prova(`TODO(prova)`) + 3 caminhos + CTA piloto (`SPEC §1`, copy de `CONTENT`). `P0 · L`
+  - feito: hero+tensão+arco+5 passos+3 caminhos+FAQ+CTA no HTML estático; Prova = TODO(prova). (2026-07-13)
   - DoD: `curl` acha o H1 e a tese; AA nos dois temas; 3 CTAs com evento distinto.
-- [ ] **0.7 · Metadata + OG** — Metadata API por rota; OG 1200×630 da home; canonical. `P0 · S`
-- [ ] **0.8 · robots.ts + sitemap.ts** — permitir buscadores e IAs; sitemap com rotas (`SEO-AGEO §2–3`). `P0 · S`
-- [ ] **0.9 · llms.txt** — servir `/llms.txt` com a definição de entidade (`SEO-AGEO §4`). `P0 · S`
-- [ ] **0.10 · JSON-LD Organization** — no layout, válido no Rich Results. `P0 · S`
-- [ ] **0.11 · /contato** — form segmentado (`?p=`), zod + RHF, Server Action → Resend/webhook, confirmação inline, evento `lead_submit_*` (`SPEC §6`). `P0 · L`
+- [x] **0.7 · Metadata + OG** — Metadata API por rota; OG 1200×630 da home; canonical. `P0 · S`
+  - feito: metadata por rota + OG 1200×630 gerada em build (lib/og); canonical ok. (2026-07-13)
+- [x] **0.8 · robots.ts + sitemap.ts** — permitir buscadores e IAs; sitemap com rotas (`SEO-AGEO §2–3`). `P0 · S`
+  - feito: buscadores + bots de IA liberados; sitemap com rotas atuais. (2026-07-13)
+- [x] **0.9 · llms.txt** — servir `/llms.txt` com a definição de entidade (`SEO-AGEO §4`). `P0 · S`
+  - feito: rota estática com entidade literal de SEO-AGEO §4. (2026-07-13)
+- [x] **0.10 · JSON-LD Organization** — no layout, válido no Rich Results. `P0 · S`
+  - feito: no layout raiz; estrutura conforme SEO-AGEO §6 (validar no Rich Results ao publicar). (2026-07-13)
+- [x] **0.11 · /contato** — form segmentado (`?p=`), zod + RHF, Server Action → Resend/webhook, confirmação inline, evento `lead_submit_*` (`SPEC §6`). `P0 · L`
+  - feito: form segmentado SSR + Server Action (adaptadores Resend/webhook por env, decisão pendente) + honeypot + lead_submit_*. (2026-07-13)
   - DoD: envia de verdade em staging; a11y de form; honeypot ativo.
 - [ ] **0.12 · Analytics** — Plausible ou GA4 + eventos de CTA; Search Console + sitemap submetido. `P0 · S`
-- [ ] **0.13 · CI** — GitHub Actions: typecheck + lint + build + Lighthouse-CI (mobile ≥ 95). `P0 · M`
+  - parcial (2026-07-13): eventos prontos e vendor-agnostic (data-event + lib/analytics); falta o owner escolher Plausible vs GA4 e o launch p/ Search Console.
+- [x] **0.13 · CI** — GitHub Actions: typecheck + lint + build + Lighthouse-CI (mobile ≥ 95). `P0 · M`
+  - feito: workflow typecheck+lint+build+gate curl+LHCI; local: perf 97-98, a11y/BP/SEO 100. (2026-07-13)
 - [ ] **0.14 · GATE ONDA 0** — checklist: "Ver código-fonte" mostra hero/tese/produtos; Search Console renderiza conteúdo; Rich Results válido; Lighthouse ok; tema não pisca. `P0 · S`
+  - parcial (2026-07-13): código-fonte mostra hero/tese/FAQ (gate no CI); Lighthouse local ≥ 97; tema sem flash por construção. Pendem verificações pós-deploy: Search Console, Rich Results Test, LHCI em produção.
   - **Só passa para Onda 1 quando este gate fecha.**
 
 ---

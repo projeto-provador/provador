@@ -14,7 +14,7 @@ export function Footer() {
             {SITE_NAME}
           </p>
           <p className="mt-4 text-sm leading-relaxed text-text-muted">{TESE}</p>
-          <p className="mt-2 text-sm text-text-subtle">São Paulo, Brasil</p>
+          <p className="mt-2 text-sm text-text-muted">São Paulo, Brasil</p>
         </div>
 
         <nav aria-label="Navegação do rodapé" className="flex flex-col gap-2 text-sm">
@@ -45,7 +45,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-border">
-        <div className="container-site py-5 text-xs text-text-subtle">
+        <div className="container-site py-5 text-xs text-text-muted">
           © {new Date().getFullYear()} {SITE_NAME}
         </div>
       </div>

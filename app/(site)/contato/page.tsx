@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { NodeGlow } from "@/components/ui/NodeGlow";
 import { CONTATO } from "@/content/contato";
 import { LeadForm } from "./LeadForm";
@@ -28,9 +27,7 @@ export default function ContatoPage() {
           {/* TODO(copy): "O que acontece depois" — 2–3 passos do processo pós-lead (SPEC §6.3) */}
         </div>
 
-        <Suspense>
-          <LeadForm />
-        </Suspense>
+        <LeadForm />
       </div>
     </section>
   );

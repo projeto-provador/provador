@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Instalar dependências
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Build (deve gerar HTML com conteúdo)
+        run: pnpm build
+
+      - name: Gate SSR — conteúdo crítico no HTML sem JS (SEO-AGEO §1)
+        run: |
+          grep -qi "assume o resultado" .next/server/app/index.html
+          grep -qi "trabalho-commodity" .next/server/app/index.html
+
+      - name: Lighthouse CI (mobile ≥ 95)
+        run: pnpm lhci

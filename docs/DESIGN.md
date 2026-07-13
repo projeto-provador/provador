@@ -142,6 +142,8 @@ Componentes referenciam **apenas** os tokens semânticos abaixo — nunca a pale
 
 **DoD de a11y:** toda combinação texto/fundo nova é checada nos **dois** temas antes do merge. Nunca usar `#00DC82` para texto pequeno sobre fundo claro — usar `--color-accent-ink`.
 
+> **Nota (verificado no Lighthouse, 2026-07-13):** `--color-text-subtle` (`#6B7A94` escuro / `#7A8AA3` claro) fica **abaixo de 4.5:1** e reprova AA para **texto pequeno**. Usar `--color-text-subtle` apenas em elementos decorativos/ícones ou texto grande; legendas e texto pequeno usam `--color-text-muted`.
+
 ---
 
 ## 6. Alternância de tema (SSR-safe, sem flash)

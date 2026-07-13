@@ -1,7 +1,6 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/Button";
@@ -23,11 +22,6 @@ function fieldError(id: string, message?: string) {
 }
 
 export function LeadForm() {
-  const params = useSearchParams();
-  const p = params.get("p");
-  const segmentoInicial =
-    p === "investidor" || p === "ecossistema" ? p : "cliente"; /* TODO(spec): default */
-
   const [enviado, setEnviado] = useState(false);
   const [erroEnvio, setErroEnvio] = useState<string | null>(null);
 
@@ -35,11 +29,20 @@ export function LeadForm() {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<LeadInput>({
     resolver: zodResolver(leadSchema),
-    defaultValues: { segmento: segmentoInicial, website: "" },
+    // TODO(spec): default do segmento sem ?p= — assumido "cliente" até o owner confirmar
+    defaultValues: { segmento: "cliente", website: "" },
   });
+
+  // ?p= pré-seleciona o segmento sem tirar o form do SSR (evita CLS do
+  // bailout de useSearchParams em rota estática).
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search).get("p");
+    if (p === "investidor" || p === "ecossistema") setValue("segmento", p);
+  }, [setValue]);
 
   const segmento = watch("segmento");
 
@@ -104,7 +107,7 @@ export function LeadForm() {
 
       <div>
         <label htmlFor="empresa" className="mb-1.5 block text-sm font-medium">
-          Empresa <span className="text-text-subtle">(opcional)</span>
+          Empresa <span className="font-normal text-text-muted">(opcional)</span>
         </label>
         <input
           id="empresa"
