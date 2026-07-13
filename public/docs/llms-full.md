@@ -29,9 +29,11 @@ Service as a Software
 | 2 | Curadoria é selo | O que o cliente paga é a curadoria do especialista, não a ferramenta por baixo? |
 | 3 | Errar tem consequência | Erro tem custo real e o especialista sempre assume? Alguém assina? |
 | 4 | Vazão vira margem | Mais vazão converte em faturamento, margem e EBITDA? |
-| +1 | Arena | Regulado é Onda 1, responsabilidade é lei. Não regulado vem depois. Tese larga, alvo estreito, uma vertical-cunha por vez. |
+| +1 | Gargalo é capacidade | Quantos projetos você recusou nos últimos 6 meses por falta de mão? A pergunta de ouro. |
 
 Classificação: 5 sins é ICP-A. 4 sins com gargalo de capacidade incerto é ICP-B. Menos que 4, ou sem gargalo de capacidade, está fora.
+
+Arena de priorização: regulado é Onda 1, porque responsabilidade é lei. Não regulado vem depois. Tese larga, alvo estreito, uma vertical-cunha por vez.
 
 ## Anti-perfil
 

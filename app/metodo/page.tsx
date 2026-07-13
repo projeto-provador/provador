@@ -108,7 +108,7 @@ export default function MetodoPage() {
           <div className="card">
             <h2 className="text-xl font-extrabold">Filtro ICP 4+1</h2>
             <p className="mt-3 text-sm text-muted">
-              Regra de qualificação. Quatro sins mais a arena.
+              Regra de qualificação. Quatro sins mais a pergunta de ouro.
             </p>
             <div className="mt-6 overflow-x-auto">
               <table className="w-full min-w-[320px] text-left text-sm">
