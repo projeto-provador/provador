@@ -88,10 +88,15 @@ Legenda esforço (E): S ≤1h · M ≤4h · L = quebrar em subtarefas.
 ## ONDA 3 — Refino e escala (contínuo)
 
 - [ ] **3.1 · A/B de hero/CTA** — testar variações de headline e CTA piloto.
+  - pós-launch (2026-07-13): exige tráfego + vendor de analytics definido (pendência 0.12).
 - [ ] **3.2 · Cases adicionais** — mais `/produtos/[slug]` com prova conforme fecham pilotos.
+  - bloqueada (2026-07-13): pipeline pronto (registry + MDX); publicar = preencher draft + published:true quando houver prova.
 - [ ] **3.3 · i18n EN** — só se houver tração internacional (decisão do owner).
+  - aguarda decisão do owner (Tipo 1 → abrir ADR quando decidir).
 - [ ] **3.4 · Otimização CWV** — cortar o que a medição apontar.
+  - baseline ok (2026-07-13): Lighthouse mobile ≥97 em todas as rotas, CLS 0; contínua pós-launch com dados de campo.
 - [ ] **3.5 · Consolidação de marca** — resolver `run.app` e bios legadas (`SEO-AGEO §11`).
+  - ação externa do owner (run.app, bios de redes); sameAs do schema já aponta só perfis canônicos.
 
 ---
 
