@@ -4,12 +4,9 @@ import { rotasImplementadas } from "@/lib/routes";
 import { POSTS } from "@/lib/posts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // lastModified reflete a data do build.
-  const dataBuild = new Date();
-
   const paginas = rotasImplementadas().map((rota) => ({
     url: `${SITE_URL}${rota.path}`,
-    lastModified: dataBuild,
+    lastModified: new Date(rota.atualizadoEm),
     changeFrequency: "weekly" as const,
     priority: rota.prioridade,
   }));

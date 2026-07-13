@@ -38,7 +38,7 @@ const FAQS = [
   {
     pergunta: "O que é a Fábrica da QuipeAI?",
     resposta:
-      "O playbook que multiplica o método: especialistas técnicos de outras verticais viram joint ventures com 30%, replicando o motor da cunha contábil no seu domínio, um NL OpticAI por vez.",
+      "O playbook que multiplica o método: especialistas técnicos de outras verticais viram joint ventures com 30%, replicando o motor da cunha contábil no seu domínio, uma vertical-cunha por vez.",
   },
   {
     pergunta: "Que especialista se qualifica?",
@@ -48,7 +48,25 @@ const FAQS = [
   {
     pergunta: "Quais são os gatilhos de equity?",
     resposta:
-      "Número medido no piloto, contrato com métrica auditável e build subsidiado pela QuipeAI. Sem número medido não há JV.",
+      "Três condições cumulativas: piloto pago concluído com a métrica de antes e depois batida, build do motor subsidiado pela QuipeAI e contrato de JV assinado com a régua de medição. Sem número medido não há JV.",
+  },
+];
+
+const CONTRATO_MODELO = [
+  {
+    titulo: "O que o contrato modelo cobre",
+    texto:
+      "Escopo da vertical-cunha, régua de medição do resultado com métrica auditável antes e depois, papéis de cada sócio, propriedade do motor e do corpus, e regras de saída. O especialista responde pela curadoria e pela assinatura. A QuipeAI responde pelo motor.",
+  },
+  {
+    titulo: "Gatilho de entrada dos 30%",
+    texto:
+      "Os 30% de participação da QuipeAI só entram quando a QuipeAI subsidia o build e o piloto bate a métrica acordada. Antes disso não há equity, há piloto pago com escopo fechado.",
+  },
+  {
+    titulo: "Gatilho de continuidade",
+    texto:
+      "A participação segue enquanto o motor opera e melhora no contexto da JV. Se a operação encerra, o especialista fica com o domínio e a carteira. O motor treinado e o acoplamento antagônico ficam com a JV.",
   },
 ];
 
@@ -97,6 +115,22 @@ export default function FabricaPage() {
       </section>
 
       <section className="border-y border-borda bg-card/40">
+        <div className="container-site py-16">
+          <h2 className="text-3xl font-extrabold">
+            Contrato modelo e gatilhos de equity
+          </h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {CONTRATO_MODELO.map((item) => (
+              <div key={item.titulo} className="card">
+                <h3 className="text-base font-bold">{item.titulo}</h3>
+                <p className="mt-2 text-sm text-muted">{item.texto}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t-0">
         <div className="container-site py-16">
           <h2 className="text-2xl font-extrabold">Perguntas frequentes da Fábrica</h2>
           <div className="mt-6">

@@ -3,6 +3,7 @@
 import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
+import { capturarUtm } from "@/lib/utm";
 
 const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID;
@@ -10,6 +11,7 @@ const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID;
 declare global {
   interface Window {
     fbq?: (...args: unknown[]) => void;
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -17,8 +19,15 @@ export default function Analytics() {
   const pathname = usePathname();
   const primeiraRota = useRef(true);
 
-  // O init do Pixel já dispara o primeiro PageView; navegações client-side
-  // do App Router disparam os seguintes.
+  // Captura UTMs em qualquer página de aterrissagem, para o pass-through
+  // até o Calendly funcionar mesmo quando o quiz é aberto depois, via
+  // navegação client-side.
+  useEffect(() => {
+    capturarUtm();
+  }, [pathname]);
+
+  // O init do Pixel e o config do GA4 cobrem o primeiro page view;
+  // navegações client-side do App Router disparam os seguintes.
   useEffect(() => {
     if (primeiraRota.current) {
       primeiraRota.current = false;
@@ -26,6 +35,9 @@ export default function Analytics() {
     }
     if (typeof window.fbq === "function") {
       window.fbq("track", "PageView");
+    }
+    if (GA4_ID && typeof window.gtag === "function") {
+      window.gtag("event", "page_view", { page_path: pathname });
     }
   }, [pathname]);
 
@@ -56,7 +68,7 @@ export default function Analytics() {
             strategy="afterInteractive"
           />
           <Script id="ga4" strategy="afterInteractive">
-            {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA4_ID}');`}
+            {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=window.gtag||gtag;gtag('js',new Date());gtag('config','${GA4_ID}');`}
           </Script>
         </>
       ) : null}

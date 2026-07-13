@@ -11,6 +11,14 @@ const UTM_KEYS = [
 
 const UTM_STORAGE_KEY = "quipeai_utm";
 
+function lerUtmSalva(): Record<string, string> {
+  try {
+    return JSON.parse(window.localStorage.getItem(UTM_STORAGE_KEY) || "{}");
+  } catch {
+    return {};
+  }
+}
+
 export function capturarUtm(): Record<string, string> {
   if (typeof window === "undefined") return {};
   const params = new URLSearchParams(window.location.search);
@@ -20,20 +28,25 @@ export function capturarUtm(): Record<string, string> {
     if (valor) utm[chave] = valor;
   }
   if (Object.keys(utm).length > 0) {
-    window.localStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(utm));
+    try {
+      window.localStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(utm));
+    } catch {
+      // storage bloqueado não pode derrubar a página
+    }
     return utm;
   }
-  try {
-    return JSON.parse(window.localStorage.getItem(UTM_STORAGE_KEY) || "{}");
-  } catch {
-    return {};
-  }
+  return lerUtmSalva();
 }
 
 export function calendlyComUtm(baseUrl: string, utm: Record<string, string>): string {
-  const url = new URL(baseUrl);
-  for (const [chave, valor] of Object.entries(utm)) {
-    url.searchParams.set(chave, valor);
+  try {
+    const url = new URL(baseUrl);
+    for (const [chave, valor] of Object.entries(utm)) {
+      url.searchParams.set(chave, valor);
+    }
+    return url.toString();
+  } catch {
+    // URL mal configurada não pode quebrar a etapa de resultado
+    return "https://calendly.com/quipeai/15min";
   }
-  return url.toString();
 }

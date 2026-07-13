@@ -5,7 +5,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import Analytics from "@/components/Analytics";
-import { organizationSchema, personSchema } from "@/lib/schema";
+import { organizationSchema } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
 
 const poppins = Poppins({
@@ -43,8 +43,8 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${poppins.variable} ${inter.variable}`}>
       <head>
+        {/* Person fica só no /manifesto para não duplicar a entidade. */}
         <JsonLd data={organizationSchema()} />
-        <JsonLd data={personSchema()} />
       </head>
       <body>
         <a href="#conteudo" className="skip-link">

@@ -54,6 +54,15 @@ Copie `.env.example` para `.env.local` e preencha:
 A Conversions API do Meta deve ser configurada no GTM Server Side, fora do
 front, usando o mesmo nome de evento `Conversa_Qualificada_Iniciada`.
 
+O formulário do quiz tem honeypot anti-bot no front, mas a URL do webhook é
+pública no bundle: valide no workflow n8n (rate limit por IP, formato do
+WhatsApp com 10-11 dígitos, rejeição de payload sem os campos do lead) antes
+de gravar no HubSpot ou Sheets.
+
+Antes de produção: substituir o placeholder do selo Quem assina
+(`Especialista Veritum`) por nome e registro CRC reais, com aprovação de
+Luiz Guilherme.
+
 ## Fluxo A (Instagram frio) no site
 
 O Manychat envia o lead para o WhatsApp com link para

@@ -45,6 +45,11 @@ export default function BlogPage() {
               <p className="eyebrow">{post.keyword}</p>
               <h2 className="mt-2 text-lg font-bold">{post.titulo}</h2>
               <p className="mt-2 text-sm text-muted">{post.descricao}</p>
+              <p className="mt-3 text-xs text-muted">
+                <time dateTime={post.data}>
+                  {new Date(`${post.data}T12:00:00`).toLocaleDateString("pt-BR")}
+                </time>
+              </p>
             </Link>
           ))}
         </div>

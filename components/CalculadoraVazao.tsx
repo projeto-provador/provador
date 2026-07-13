@@ -6,6 +6,13 @@ import { trackGa4 } from "@/lib/analytics";
 // Calculadora de vazão. Inputs: clientes ativos, tempo médio por entrega em
 // horas, % commodity estimado. Output: horas commodity por mês e potencial de
 // liberação com o motor.
+const INPUT_CLASS =
+  "mt-2 w-full rounded-card2 border border-borda bg-obsidian px-4 py-3 text-white focus:border-neural focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neural";
+
+function limparNumero(valor: string, maxDigitos: number): string {
+  return valor.replace(/\D/g, "").slice(0, maxDigitos);
+}
+
 export default function CalculadoraVazao() {
   const [clientes, setClientes] = useState("30");
   const [horasPorEntrega, setHorasPorEntrega] = useState("8");
@@ -14,7 +21,7 @@ export default function CalculadoraVazao() {
 
   const numClientes = Number(clientes) || 0;
   const numHoras = Number(horasPorEntrega) || 0;
-  const numPercentual = Math.min(100, Math.max(0, Number(percentualCommodity) || 0));
+  const numPercentual = Math.min(100, Number(percentualCommodity) || 0);
 
   const horasTotais = numClientes * numHoras;
   const horasCommodity = Math.round(horasTotais * (numPercentual / 100));
@@ -45,9 +52,10 @@ export default function CalculadoraVazao() {
           <input
             id="calc-clientes"
             inputMode="numeric"
+            maxLength={5}
             value={clientes}
-            onChange={(e) => setClientes(e.target.value.replace(/\D/g, ""))}
-            className="mt-2 w-full rounded-card2 border border-borda bg-obsidian px-4 py-3 text-white focus:border-neural focus:outline-none"
+            onChange={(e) => setClientes(limparNumero(e.target.value, 5))}
+            className={INPUT_CLASS}
           />
         </div>
         <div>
@@ -57,9 +65,10 @@ export default function CalculadoraVazao() {
           <input
             id="calc-horas"
             inputMode="numeric"
+            maxLength={4}
             value={horasPorEntrega}
-            onChange={(e) => setHorasPorEntrega(e.target.value.replace(/\D/g, ""))}
-            className="mt-2 w-full rounded-card2 border border-borda bg-obsidian px-4 py-3 text-white focus:border-neural focus:outline-none"
+            onChange={(e) => setHorasPorEntrega(limparNumero(e.target.value, 4))}
+            className={INPUT_CLASS}
           />
         </div>
         <div>
@@ -69,11 +78,18 @@ export default function CalculadoraVazao() {
           <input
             id="calc-percentual"
             inputMode="numeric"
+            maxLength={3}
             value={percentualCommodity}
-            onChange={(e) =>
-              setPercentualCommodity(e.target.value.replace(/\D/g, ""))
-            }
-            className="mt-2 w-full rounded-card2 border border-borda bg-obsidian px-4 py-3 text-white focus:border-neural focus:outline-none"
+            onChange={(e) => {
+              // Clampa em 100 já no input, para o valor exibido corresponder
+              // sempre ao valor calculado.
+              const limpo = limparNumero(e.target.value, 3);
+              const numero = Number(limpo);
+              setPercentualCommodity(
+                limpo === "" ? "" : String(Math.min(100, numero))
+              );
+            }}
+            className={INPUT_CLASS}
           />
         </div>
       </div>
@@ -82,30 +98,30 @@ export default function CalculadoraVazao() {
         Calcular
       </button>
 
-      {calculou ? (
-        <div
-          className="card-2 mt-6 flex flex-wrap items-center gap-8"
-          role="status"
-          aria-live="polite"
-        >
-          <div>
-            <p className="text-xs uppercase tracking-widest text-muted">
-              Horas commodity por mês
+      {/* Região de status sempre montada, para leitores de tela anunciarem
+          o resultado quando ele for injetado. */}
+      <div role="status" aria-live="polite">
+        {calculou ? (
+          <div className="card-2 mt-6 flex flex-wrap items-center gap-8">
+            <div>
+              <p className="text-xs uppercase tracking-widest text-muted">
+                Horas commodity por mês
+              </p>
+              <p className="numero-serif">{horasCommodity.toLocaleString("pt-BR")}h</p>
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-widest text-muted">
+                Potencial de liberação com o motor
+              </p>
+              <p className="numero-serif">{horasLiberadas.toLocaleString("pt-BR")}h</p>
+            </div>
+            <p className="max-w-sm text-sm text-muted">
+              Horas que voltam para revisão, decisão e assinatura no ponto de
+              responsabilidade. Vazão vira faturamento, margem e EBITDA.
             </p>
-            <p className="numero-serif">{horasCommodity.toLocaleString("pt-BR")}h</p>
           </div>
-          <div>
-            <p className="text-xs uppercase tracking-widest text-muted">
-              Potencial de liberação com o motor
-            </p>
-            <p className="numero-serif">{horasLiberadas.toLocaleString("pt-BR")}h</p>
-          </div>
-          <p className="max-w-sm text-sm text-muted">
-            Horas que voltam para revisão, decisão e assinatura no ponto de
-            responsabilidade. Vazão vira faturamento, margem e EBITDA.
-          </p>
-        </div>
-      ) : null}
+        ) : null}
+      </div>
     </div>
   );
 }

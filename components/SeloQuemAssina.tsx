@@ -1,4 +1,8 @@
 // Selo Quem assina: avatar, nome, registro profissional e texto padrão.
+// ANTES DE PRODUÇÃO: substituir o placeholder "Especialista Veritum" pelo
+// nome real do profissional e pelo número de registro CRC verificável, com
+// aprovação de Luiz Guilherme. Registro CFC é público e checável; um selo
+// genérico enfraquece a prova.
 type SeloQuemAssinaProps = {
   nome: string;
   registro: string;

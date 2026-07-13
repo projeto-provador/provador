@@ -1,6 +1,8 @@
 // Artigos do cluster Reforma Tributária CBS IBS. Estrutura obrigatória:
 // H1 único com palavra chave, introdução com o dado de 53%, H2 hierárquico,
 // FAQ com 5 perguntas e CTA para o quiz 4+1. Voz tersa, sem hype.
+// Parágrafos aceitam links internos no formato [texto](/caminho), renderizados
+// pelo blog para o interlinking spoke-pillar e spoke-spoke do cluster.
 export type SecaoPost = {
   h2: string;
   paragrafos: string[];
@@ -9,6 +11,8 @@ export type SecaoPost = {
 export type Post = {
   slug: string;
   titulo: string;
+  // Title tag curto para a SERP; o H1 usa titulo completo.
+  tituloSeo: string;
   descricao: string;
   data: string;
   keyword: string;
@@ -21,13 +25,14 @@ export const POSTS: Post[] = [
   {
     slug: "reforma-tributaria-contabilidade-2026-cbs-ibs",
     titulo: "Reforma tributária na contabilidade 2026: o que CBS e IBS mudam na sua firma",
+    tituloSeo: "Reforma tributária contabilidade 2026 CBS IBS",
     descricao:
       "Guia da reforma tributária contabilidade 2026 CBS IBS: transição com dois regimes, demanda represada contábil e como manter a assinatura CFC com mais vazão.",
     data: "2026-07-13",
     keyword: "reforma tributária contabilidade 2026 CBS IBS",
     intro: [
       "A reforma tributária contabilidade 2026 CBS IBS não é um evento futuro. A transição já começou e 53% das empresas estão contratando 3 ou mais pessoas para atravessá-la, segundo Robert Half e Fenacon em dezembro de 2025.",
-      "Para a firma contábil, isso significa duas contas ao mesmo tempo: o regime antigo ainda vivo e o novo regime de CBS e IBS entrando. O volume de reclassificação, conciliação e auditoria dobra. A mão de obra não.",
+      "Para a firma contábil, isso significa duas contas ao mesmo tempo: o regime antigo ainda vivo e o novo regime de CBS e IBS entrando. O volume de reclassificação, conciliação e auditoria dobra. A [mão de obra não](/blog/escassez-de-contadores-reforma-tributaria).",
     ],
     secoes: [
       {
@@ -41,7 +46,7 @@ export const POSTS: Post[] = [
         h2: "O que é trabalho-commodity na contabilidade",
         paragrafos: [
           "Trabalho-commodity é a fatia repetitiva, previsível e sem julgamento do trabalho do especialista. Na contabilidade da transição: conciliar lançamentos nos dois regimes, triar documentos fiscais, rascunhar papéis de trabalho, classificar operações e extrair dados de notas.",
-          "É exatamente essa fatia que a IA aposenta. Não a decisão. Não a assinatura. A fatia repetível que hoje consome o tempo do seu melhor contador ou uma pirâmide de juniores cara e lenta.",
+          "É exatamente essa fatia que a [IA aposenta na contabilidade](/blog/trabalho-commodity-na-contabilidade-o-que-automatizar). Não a decisão. Não a assinatura. A fatia repetível que hoje consome o tempo do seu melhor contador ou uma pirâmide de juniores cara e lenta.",
         ],
       },
       {
@@ -62,7 +67,7 @@ export const POSTS: Post[] = [
         h2: "Calculadora de vazão: quantas horas a transição vai custar",
         paragrafos: [
           "Multiplique clientes ativos pelo tempo médio de entrega mensal e pelo percentual de trabalho commodity. O resultado costuma assustar: são centenas de horas por mês na fatia repetível.",
-          "A calculadora de vazão da QuipeAI faz essa conta em 30 segundos e mostra o potencial de liberação com o motor. Está na página da cunha contábil, junto com o teste 4+1.",
+          "A [calculadora de vazão da QuipeAI](/cunha-contabil#calculadora) faz essa conta em 30 segundos e mostra o potencial de liberação com o motor. Está na página da cunha contábil, junto com o [teste 4+1](/cunha-contabil#quiz).",
         ],
       },
     ],
@@ -97,9 +102,10 @@ export const POSTS: Post[] = [
   {
     slug: "escassez-de-contadores-reforma-tributaria",
     titulo: "Escassez de contadores na reforma tributária: contratar ou multiplicar vazão",
+    tituloSeo: "Escassez de contadores na reforma tributária",
     descricao:
       "Escassez de contadores encontra a reforma tributária CBS IBS: por que contratar não fecha a conta e como multiplicar a vazão do time que assina.",
-    data: "2026-07-13",
+    data: "2026-07-12",
     keyword: "escassez de contadores",
     intro: [
       "A escassez de contadores chegou junto com a maior mudança tributária em décadas. 53% das empresas estão contratando 3 ou mais pessoas para a transição da reforma, segundo Robert Half e Fenacon em dezembro de 2025. Todas pescando no mesmo lago vazio.",
@@ -117,7 +123,7 @@ export const POSTS: Post[] = [
         h2: "Demanda represada contábil: o sintoma que ninguém mede",
         paragrafos: [
           "A pergunta de ouro é simples: quantos projetos a sua firma recusou nos últimos 6 meses por falta de mão? Se a resposta é um ou mais, o gargalo não é demanda. É capacidade.",
-          "Demanda represada é faturamento que já bateu na porta e foi embora. Com a reforma, a fila só cresce.",
+          "[Demanda represada](/blog/demanda-represada-contabil-como-medir) é faturamento que já bateu na porta e foi embora. Com a [reforma](/blog/reforma-tributaria-contabilidade-2026-cbs-ibs), a fila só cresce.",
         ],
       },
       {
@@ -131,7 +137,7 @@ export const POSTS: Post[] = [
         h2: "A conta da pirâmide contra a conta do motor",
         paragrafos: [
           "Um júnior custa salário, encargos, meses de formação e risco de saída. O motor custa uma fração, não pede demissão e melhora a cada ciclo, porque o aprendizado fica no projeto.",
-          "A comparação justa não é ferramenta contra pessoa. É pirâmide lenta contra especialista com vazão multiplicada.",
+          "A comparação justa não é ferramenta contra pessoa. É pirâmide lenta contra especialista com vazão multiplicada. A conta começa na [cunha contábil](/cunha-contabil).",
         ],
       },
     ],
@@ -166,9 +172,10 @@ export const POSTS: Post[] = [
   {
     slug: "auditoria-contabil-na-transicao-cbs-ibs",
     titulo: "Auditoria contábil na transição CBS IBS: dois regimes, o dobro de papéis",
+    tituloSeo: "Auditoria contábil na transição CBS IBS",
     descricao:
       "Auditoria contábil na transição CBS IBS: por que os papéis de trabalho dobram, o que automatizar e como manter a assinatura CFC no ponto de responsabilidade.",
-    data: "2026-07-13",
+    data: "2026-07-11",
     keyword: "auditoria contábil CBS IBS",
     intro: [
       "A auditoria contábil entra na transição CBS IBS com o dobro de papéis de trabalho e a mesma quantidade de auditores. 53% das empresas estão contratando 3 ou mais pessoas para a reforma, segundo Robert Half e Fenacon em dezembro de 2025, e as firmas de auditoria disputam os mesmos profissionais.",
@@ -178,7 +185,7 @@ export const POSTS: Post[] = [
       {
         h2: "O que dobra na auditoria com CBS e IBS",
         paragrafos: [
-          "Circularização e conciliação passam a cruzar dois regimes. Testes de receita e corte precisam validar o reconhecimento nas duas bases. Créditos de PIS e Cofins em extinção convivem com créditos de CBS nascendo.",
+          "Circularização e conciliação passam a cruzar os [dois regimes da transição](/blog/reforma-tributaria-contabilidade-2026-cbs-ibs). Testes de receita e corte precisam validar o reconhecimento nas duas bases. Créditos de PIS e Cofins em extinção convivem com créditos de CBS nascendo.",
           "Cada teste gera papel de trabalho. Cada papel exige evidência, revisão e assinatura de auditor com registro CFC. O volume dobra, a responsabilidade continua concentrada em quem assina.",
         ],
       },
@@ -193,7 +200,7 @@ export const POSTS: Post[] = [
         h2: "O auditor no ponto de responsabilidade",
         paragrafos: [
           "Ponto de responsabilidade é onde o risco se concentra e alguém precisa decidir, assinar e responder. Na auditoria brasileira, esse alguém tem registro CFC e responde pelo parecer. Ali a autonomia da máquina para, por desenho.",
-          "O escopo padrão do piloto QuipeAI cobre 35 testes sobre 10 documentos, com trilha completa: evidência, contestação antagônica e campo de decisão do auditor. Nada sai sem assinatura.",
+          "O escopo padrão do [piloto QuipeAI](/cunha-contabil) cobre 35 testes sobre 10 documentos, com trilha completa: evidência, contestação antagônica e campo de decisão do auditor. Nada sai [sem assinatura](/blog/cfc-assinatura-e-ia-na-contabilidade).",
         ],
       },
       {
@@ -235,9 +242,10 @@ export const POSTS: Post[] = [
   {
     slug: "demanda-represada-contabil-como-medir",
     titulo: "Demanda represada contábil: a métrica que sua firma não acompanha",
+    tituloSeo: "Demanda represada contábil: como medir",
     descricao:
       "Demanda represada contábil: como medir projetos recusados por falta de mão, por que essa é a métrica de ouro e o que fazer quando a fila cresce com a reforma.",
-    data: "2026-07-13",
+    data: "2026-07-10",
     keyword: "demanda represada contábil",
     intro: [
       "Demanda represada contábil é faturamento que bateu na porta e foi embora: projetos recusados por falta de mão. Com 53% das empresas contratando 3 ou mais pessoas para a reforma tributária, segundo Robert Half e Fenacon em dezembro de 2025, a fila nas firmas só cresce.",
@@ -248,7 +256,7 @@ export const POSTS: Post[] = [
         h2: "A pergunta de ouro: quantos projetos você recusou",
         paragrafos: [
           "A medição é uma pergunta: quantos projetos a firma recusou nos últimos 6 meses por falta de mão? Um ou mais já indica demanda represada. A resposta separa gargalo de capacidade de gargalo de demanda.",
-          "Gargalo de demanda se resolve com marketing. Gargalo de capacidade não: cada real investido em atrair cliente novo vira fila, não faturamento.",
+          "Gargalo de demanda se resolve com marketing. Gargalo de capacidade não: cada real investido em atrair cliente novo vira fila, não faturamento. E com a [escassez de contadores](/blog/escassez-de-contadores-reforma-tributaria), contratar não fecha a conta.",
         ],
       },
       {
@@ -261,7 +269,7 @@ export const POSTS: Post[] = [
       {
         h2: "Capacidade sem contratação: o trabalho-commodity sai da fila",
         paragrafos: [
-          "A fatia repetitiva do trabalho contábil, conciliar, triar, rascunhar, classificar e extrair, é trabalho-commodity. É onde as horas se perdem e é o que um motor de IA treinado no corpus da firma assume com vazão alta.",
+          "A fatia repetitiva do trabalho contábil, conciliar, triar, rascunhar, classificar e extrair, é [trabalho-commodity](/blog/trabalho-commodity-na-contabilidade-o-que-automatizar). É onde as horas se perdem e é o que um motor de IA treinado no corpus da firma assume com vazão alta.",
           "O especialista continua decidindo e assinando no ponto de responsabilidade, como exige o CFC. No case medido da QuipeAI, a primeira entrega caiu de 12 dias para 2 dias com a mesma assinatura.",
         ],
       },
@@ -269,7 +277,7 @@ export const POSTS: Post[] = [
         h2: "Vazão vira margem, fila vira faturamento",
         paragrafos: [
           "Cada hora de commodity liberada é hora de revisão e assinatura disponível. Mais vazão converte em faturamento, margem e EBITDA sem custo marginal de contratação.",
-          "O primeiro passo é medir: a calculadora de vazão da QuipeAI estima as horas de commodity mensais da firma em 30 segundos.",
+          "O primeiro passo é medir: a [calculadora de vazão da QuipeAI](/cunha-contabil#calculadora) estima as horas de commodity mensais da firma em 30 segundos.",
         ],
       },
     ],
@@ -304,9 +312,10 @@ export const POSTS: Post[] = [
   {
     slug: "cfc-assinatura-e-ia-na-contabilidade",
     titulo: "CFC, assinatura e IA: quem responde pelo trabalho contábil na era dos agentes",
+    tituloSeo: "CFC, assinatura e IA na contabilidade",
     descricao:
       "CFC, assinatura e IA na contabilidade: por que a responsabilidade é lei, o que o EU AI Act muda e como usar IA sem abrir mão do ponto de responsabilidade.",
-    data: "2026-07-13",
+    data: "2026-07-09",
     keyword: "CFC assinatura IA contabilidade",
     intro: [
       "A IA entrou na contabilidade, mas a assinatura continua tendo dono. O CFC exige profissional habilitado respondendo por demonstrações e pareceres, e a reforma tributária multiplicou o volume: 53% das empresas estão contratando 3 ou mais pessoas para a transição, segundo Robert Half e Fenacon em dezembro de 2025.",
@@ -330,15 +339,15 @@ export const POSTS: Post[] = [
       {
         h2: "Usar IA sem quebrar a cadeia de responsabilidade",
         paragrafos: [
-          "O erro comum é usar ChatGPT solto: rascunhos sem trilha, sem contestação e sem evidência, que ninguém confia para assinar. O especialista refaz tudo e a produtividade prometida evapora.",
+          "O erro comum é usar ChatGPT solto: rascunhos sem trilha, sem contestação e sem evidência, que ninguém confia para assinar. Na [auditoria da transição CBS IBS](/blog/auditoria-contabil-na-transicao-cbs-ibs), esse risco dobra. O especialista refaz tudo e a produtividade prometida evapora.",
           "O método QuipeAI resolve com autonomia limitada por desenho: motor treinado no corpus da firma, camada antagônica que contesta cada rascunho antes do humano e trilha completa até o campo de decisão. O contador assina com base auditável.",
         ],
       },
       {
         h2: "A assinatura como produto, não como carimbo",
         paragrafos: [
-          "Quando a IA assume o trabalho-commodity, o que sobra é exatamente o que o cliente paga: julgamento, decisão e assinatura de quem responde. A curadoria vira o selo.",
-          "No case medido da cunha contábil, a primeira entrega caiu de 12 dias para 2 dias com a mesma assinatura CFC. A vazão mudou. A responsabilidade, não.",
+          "Quando a IA assume o [trabalho-commodity](/blog/trabalho-commodity-na-contabilidade-o-que-automatizar), o que sobra é exatamente o que o cliente paga: julgamento, decisão e assinatura de quem responde. A curadoria vira o selo.",
+          "No [case medido da cunha contábil](/cunha-contabil), a primeira entrega caiu de 12 dias para 2 dias com a mesma assinatura CFC. A vazão mudou. A responsabilidade, não.",
         ],
       },
     ],
@@ -373,9 +382,10 @@ export const POSTS: Post[] = [
   {
     slug: "trabalho-commodity-na-contabilidade-o-que-automatizar",
     titulo: "Trabalho-commodity na contabilidade: o que automatizar primeiro na sua firma",
+    tituloSeo: "Trabalho-commodity na contabilidade",
     descricao:
       "Trabalho-commodity na contabilidade: como identificar a fatia repetitiva, o que automatizar primeiro com a reforma CBS IBS e onde a assinatura CFC entra.",
-    data: "2026-07-13",
+    data: "2026-07-08",
     keyword: "trabalho-commodity contabilidade",
     intro: [
       "Trabalho-commodity é a fatia repetitiva, previsível e sem julgamento do trabalho do especialista: conciliar, triar, rascunhar, classificar, extrair. Na contabilidade da reforma, essa fatia explodiu: 53% das empresas estão contratando 3 ou mais pessoas para a transição, segundo Robert Half e Fenacon em dezembro de 2025.",
@@ -392,8 +402,8 @@ export const POSTS: Post[] = [
       {
         h2: "A ordem certa de automação",
         paragrafos: [
-          "Primeiro o maior volume com menor risco: conciliação e extração. Depois classificação com a reforma CBS IBS, onde o motor precisa do corpus da firma. Por último os rascunhos de papéis de trabalho e minutas, que alimentam direto quem assina.",
-          "O critério é sempre vazão liberada por hora de especialista. Automatizar tarefa rara ou de alto julgamento é desperdício.",
+          "Primeiro o maior volume com menor risco: conciliação e extração. Depois classificação com a [reforma CBS IBS](/blog/reforma-tributaria-contabilidade-2026-cbs-ibs), onde o motor precisa do corpus da firma. Por último os rascunhos de papéis de trabalho e minutas, que alimentam direto quem assina.",
+          "O critério é sempre vazão liberada por hora de especialista, medida contra a [demanda represada](/blog/demanda-represada-contabil-como-medir). Automatizar tarefa rara ou de alto julgamento é desperdício.",
         ],
       },
       {
@@ -407,7 +417,7 @@ export const POSTS: Post[] = [
         h2: "O que esperar de resultado",
         paragrafos: [
           "No case medido da cunha contábil QuipeAI, a primeira entrega caiu de 12 dias para 2 dias com qualidade mantida e a mesma assinatura CFC.",
-          "A régua para a sua firma: horas de commodity por mês vezes o percentual liberado. A calculadora de vazão faz a conta e o teste 4+1 diz se a firma tem perfil de piloto.",
+          "A régua para a sua firma: horas de commodity por mês vezes o percentual liberado. A [calculadora de vazão](/cunha-contabil#calculadora) faz a conta e o [teste 4+1](/cunha-contabil#quiz) diz se a firma tem perfil de piloto.",
         ],
       },
     ],

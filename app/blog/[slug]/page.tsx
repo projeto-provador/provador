@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
 import FaqLista from "@/components/FaqLista";
+import TextoComLinks from "@/components/TextoComLinks";
 import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { POSTS, postPorSlug } from "@/lib/posts";
 
@@ -16,9 +17,16 @@ export function generateMetadata({ params }: Props): Metadata {
   const post = postPorSlug(params.slug);
   if (!post) return {};
   return {
-    title: post.titulo,
+    title: post.tituloSeo,
     description: post.descricao,
     alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      type: "article",
+      title: post.titulo,
+      description: post.descricao,
+      url: `/blog/${post.slug}`,
+      publishedTime: post.data,
+    },
   };
 }
 
@@ -53,7 +61,10 @@ export default function PostPage({ params }: Props) {
               {post.titulo}
             </h1>
             <p className="mt-4 text-sm text-muted">
-              QuipeAI · {new Date(`${post.data}T12:00:00`).toLocaleDateString("pt-BR")}
+              QuipeAI ·{" "}
+              <time dateTime={post.data}>
+                {new Date(`${post.data}T12:00:00`).toLocaleDateString("pt-BR")}
+              </time>
             </p>
           </div>
         </header>
@@ -61,7 +72,7 @@ export default function PostPage({ params }: Props) {
         <div className="container-site max-w-4xl py-12">
           {post.intro.map((paragrafo) => (
             <p key={paragrafo} className="mt-4 text-lg leading-relaxed text-muted">
-              {paragrafo}
+              <TextoComLinks texto={paragrafo} />
             </p>
           ))}
 
@@ -70,7 +81,7 @@ export default function PostPage({ params }: Props) {
               <h2 className="text-2xl font-extrabold text-white">{secao.h2}</h2>
               {secao.paragrafos.map((paragrafo) => (
                 <p key={paragrafo} className="mt-4 leading-relaxed text-muted">
-                  {paragrafo}
+                  <TextoComLinks texto={paragrafo} />
                 </p>
               ))}
             </section>

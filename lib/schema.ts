@@ -90,17 +90,23 @@ export function articleSchema(input: {
   descricao: string;
   path: string;
   dataPublicacao: string;
+  dataModificacao?: string;
 }): JsonLd {
+  const url = `${SITE_URL}${input.path}`;
   return {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: input.titulo,
     description: input.descricao,
-    url: `${SITE_URL}${input.path}`,
+    url,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    image: `${SITE_URL}/opengraph-image`,
     datePublished: input.dataPublicacao,
+    dateModified: input.dataModificacao ?? input.dataPublicacao,
     author: {
       "@type": "Person",
       name: FOUNDER,
+      url: `${SITE_URL}/manifesto`,
     },
     publisher: {
       "@type": "Organization",

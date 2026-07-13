@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import FaqLista from "@/components/FaqLista";
 import JsonLd from "@/components/JsonLd";
 import QuizFiltro from "@/components/QuizFiltro";
@@ -195,7 +196,19 @@ export default function CunhaContabilPage() {
 
       <section className="container-site py-16" aria-label="Teste e vagas de piloto">
         <div className="grid gap-8 lg:grid-cols-[1fr_360px]">
-          <QuizFiltro />
+          <Suspense
+            fallback={
+              <div id="quiz" className="card scroll-mt-24">
+                <p className="eyebrow">Teste 4+1</p>
+                <h2 className="mt-2 text-2xl font-extrabold">
+                  Descubra em 60s se você é ICP-A da Onda 1
+                </h2>
+                <p className="mt-4 text-sm text-muted">Carregando o teste...</p>
+              </div>
+            }
+          >
+            <QuizFiltro />
+          </Suspense>
           <aside className="card h-fit border-neural">
             <p className="eyebrow">3 vagas de piloto pago</p>
             <p className="mt-3 text-sm text-muted">
