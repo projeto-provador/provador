@@ -1,1 +1,109 @@
 @import "tailwindcss";
+@import "../styles/tokens.css";
+
+/* Variantes por tema (para elementos que mudam entre Obsidian Escuro/Claro) */
+@custom-variant theme-light (&:where([data-theme="light"], [data-theme="light"] *));
+
+/* Tokens semânticos expostos ao Tailwind — DESIGN.md §12 */
+@theme inline {
+  --color-*: initial;
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-surface-alt: var(--color-surface-alt);
+  --color-border: var(--color-border);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-subtle: var(--color-text-subtle);
+  --color-accent: var(--color-accent);
+  --color-accent-ink: var(--color-accent-ink);
+  --color-accent-contrast: var(--color-accent-contrast);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-ink: var(--color-secondary-ink);
+  --color-focus: var(--color-focus);
+  --color-glow: var(--color-glow);
+  --color-overlay-header: var(--overlay-header);
+
+  --font-display: var(--font-poppins), sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius-lg);
+
+  --shadow-card: var(--shadow-card);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Transição suave ao trocar de tema — DESIGN.md §6.5 */
+  @media (prefers-reduced-motion: no-preference) {
+    body {
+      transition:
+        background-color 0.2s,
+        color 0.2s;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+  }
+
+  /* Escala tipográfica — DESIGN.md §7 */
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+  h2 {
+    font-size: clamp(1.7rem, 3.6vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  h3 {
+    font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  /* Foco visível — DESIGN.md §9 / WCAG */
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+}
+
+@utility container-site {
+  /* Container — DESIGN.md §8 */
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-inline: clamp(1.2rem, 4vw, 2.5rem);
+}
+
+@utility section-pad {
+  /* Seções — DESIGN.md §8 */
+  padding-block: clamp(3rem, 8vw, 7rem);
+}
+
+@utility eyebrow {
+  /* Eyebrow — DESIGN.md §7 */
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent-ink);
+  font-family: var(--font-display);
+}
+
+@utility prose-width {
+  max-width: 66ch;
+}

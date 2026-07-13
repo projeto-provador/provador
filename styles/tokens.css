@@ -1,0 +1,60 @@
+/* ===== Base de marca (não usar direto em componente) — DESIGN.md §2 ===== */
+:root {
+  --obsidian: #0b1120;
+  --obsidian-2: #111a2e;
+  --obsidian-3: #17203a;
+  --obsidian-4: #1e2a4a;
+  --neural: #00dc82;
+  --neural-deep: #04b26a;
+  --neural-ink: #067a4e;
+  --interlink: #3b82f6;
+  --interlink-ink: #2563eb;
+  --white: #ffffff;
+
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 24px;
+}
+
+/* ===== OBSIDIAN ESCURO (default) — DESIGN.md §4 ===== */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: var(--obsidian);
+  --color-surface: var(--obsidian-3);
+  --color-surface-alt: var(--obsidian-4);
+  --color-border: #243154;
+  --color-text: var(--white);
+  --color-text-muted: #9aa7bd;
+  --color-text-subtle: #6b7a94;
+  --color-accent: var(--neural);
+  --color-accent-ink: var(--neural); /* neon lê bem sobre obsidian */
+  --color-accent-contrast: var(--obsidian); /* texto escuro sobre botão verde */
+  --color-secondary: var(--interlink);
+  --color-secondary-ink: #7ca9fb; /* azul clareado p/ texto no escuro */
+  --color-focus: var(--neural);
+  --color-glow: rgba(0, 220, 130, 0.14);
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.35);
+  --overlay-header: rgba(11, 17, 32, 0.86);
+}
+
+/* ===== OBSIDIAN CLARO — DESIGN.md §4 ===== */
+[data-theme="light"] {
+  color-scheme: light;
+  --color-bg: #f4f6fa; /* papel frio, leve tom azul-obsidiana */
+  --color-surface: #ffffff;
+  --color-surface-alt: #edf1f7;
+  --color-border: #d9e0ec;
+  --color-text: #0b1120; /* a própria obsidian vira o texto */
+  --color-text-muted: #47566e;
+  --color-text-subtle: #7a8aa3;
+  --color-accent: var(--neural); /* fills/node continuam neon */
+  --color-accent-ink: var(--neural-ink); /* #067A4E — verde AA p/ texto */
+  --color-accent-contrast: #04240f; /* texto sobre botão verde no claro */
+  --color-secondary: var(--interlink);
+  --color-secondary-ink: var(--interlink-ink); /* #2563EB — azul AA p/ texto */
+  --color-focus: var(--neural-ink);
+  --color-glow: rgba(6, 122, 78, 0.16);
+  --shadow-card: 0 6px 24px rgba(11, 17, 32, 0.08);
+  --overlay-header: rgba(244, 246, 250, 0.86);
+}
