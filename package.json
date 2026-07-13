@@ -17,8 +17,5 @@
     "express": "^4.19.2",
     "nodemailer": "^6.9.14",
     "pg": "^8.12.0"
-  },
-  "optionalDependencies": {
-    "@open-wa/wa-automate": "^4.72.0"
   }
 }

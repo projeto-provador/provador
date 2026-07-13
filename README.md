@@ -70,7 +70,7 @@ Escolha o `WHATSAPP_PROVIDER`:
 |----------|-----------|----------------|
 | `none` (padrão) | **Não envia.** Só registra no log um link `wa.me` pronto para você clicar e mandar manualmente. | Zero — é o "mais simples pra envio". |
 | `cloud` | **WhatsApp Cloud API** oficial da Meta (só HTTP). | Precisa de conta no Meta Business + token + número. |
-| `openwa` | `@open-wa/wa-automate` — sobe um navegador e você escaneia o QR code. | Instala dependência pesada; sessão precisa ficar de pé. |
+| `openwa` | `@open-wa/wa-automate` — sobe um navegador e você escaneia o QR code. | Dependência pesada; sessão precisa ficar de pé. **Não funciona no Vercel** (só em servidor tradicional). |
 
 ```env
 # opção simples
@@ -82,9 +82,9 @@ WHATSAPP_PROVIDER=cloud
 WA_CLOUD_TOKEN=EAAB...
 WA_CLOUD_PHONE_ID=123456789
 
-# opção open-wa
+# opção open-wa (apenas servidor tradicional, NÃO no Vercel)
 WHATSAPP_PROVIDER=openwa
-# npm i @open-wa/wa-automate   (é optionalDependency)
+npm i @open-wa/wa-automate   # instale à parte; não vem no package.json
 ```
 
 > Todos os envios (e-mail e WhatsApp) são **best-effort**: uma falha neles nunca
@@ -136,10 +136,57 @@ provador/
 └─ package.json
 ```
 
-## Deploy
+## Deploy no Vercel
 
-Serve o front e a API do mesmo processo, então basta hospedar o Node
-(Render, Railway, Fly, VPS…) com as variáveis do `.env` e um Postgres.
-Se preferir hospedar a landing separada (Vercel/Netlify), aponte o
-`API_BASE` no topo do `<script>` em `public/index.html` para a URL do backend
-e ajuste `ALLOWED_ORIGINS` no `.env`.
+O projeto já vem pronto para o Vercel:
+
+- `public/` é servido como estático (a landing).
+- `api/[...path].js` é a função serverless que embrulha o app Express — todas as
+  rotas `/api/*` caem nela.
+- `vercel.json` define a função e a rota raiz.
+
+### Passo a passo (importando o repositório — recomendado)
+
+1. Tenha um **Postgres gerenciado**. O mais fácil é criar um no próprio Vercel:
+   painel do projeto → **Storage → Create Database → Postgres** (Neon). Isso
+   injeta a `DATABASE_URL` automaticamente. Alternativas: Supabase, Neon direto.
+   > Em serverless, **use a connection string com pooling** (Supabase porta
+   > `6543` / Neon "pooled") para não esgotar conexões.
+2. No [vercel.com](https://vercel.com) → **Add New → Project** → importe
+   `projeto-provador/provador` e selecione a branch.
+3. Em **Settings → Environment Variables**, adicione:
+
+   | Variável | Obrigatória | Observação |
+   |----------|:---:|------------|
+   | `DATABASE_URL` | ✅ | já preenchida se usar o Postgres do Vercel; senão cole a sua |
+   | `PGSSL` | ✅ | `true` |
+   | `ALLOWED_ORIGINS` | ⛔ | `*` ou o domínio do seu site |
+   | `EMAIL_ENABLED` + `SMTP_*` + `TEAM_EMAIL` | ⛔ | para ligar e-mail |
+   | `WHATSAPP_PROVIDER` | ⛔ | `none` ou `cloud` (**`openwa` não roda no Vercel**) |
+   | `WA_CLOUD_*` | ⛔ | se `WHATSAPP_PROVIDER=cloud` |
+   | `ADMIN_TOKEN` | ⛔ | para habilitar `GET /api/leads` |
+
+4. **Deploy**. Não há build step (front estático + funções).
+5. Rode o schema **uma vez** (ou deixe o auto-init cuidar no 1º request):
+   ```bash
+   psql "$DATABASE_URL" -f server/schema.sql
+   ```
+   O servidor também cria o schema sozinho no primeiro request
+   (`AUTO_INIT_SCHEMA=false` desliga esse comportamento).
+
+### Passo a passo (via CLI)
+
+```bash
+npm i -g vercel
+vercel login
+vercel            # preview
+vercel --prod     # produção
+# defina as env vars com:  vercel env add DATABASE_URL
+```
+
+## Outros hosts (Render, Railway, Fly, VPS)
+
+Nesses, o app roda como servidor tradicional (front + API no mesmo processo):
+basta `npm start` com as variáveis do `.env` e um Postgres. Se hospedar a
+landing separada da API, aponte o `API_BASE` no topo do `<script>` em
+`public/index.html` para a URL do backend e ajuste `ALLOWED_ORIGINS`.

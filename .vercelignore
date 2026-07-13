@@ -1,0 +1,9 @@
+node_modules
+.env
+.env.local
+*.log
+
+# open-wa (não funciona em serverless de qualquer forma)
+.wwebjs_auth
+tokens
+session*.data.json

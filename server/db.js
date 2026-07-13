@@ -56,6 +56,19 @@ export async function initSchema() {
   await pool.query(sql);
 }
 
+// Garante o schema apenas uma vez por processo (cacheia a promise). Útil em
+// serverless, onde não há passo de boot dedicado.
+let schemaPromise = null;
+export function ensureSchemaOnce() {
+  if (!schemaPromise) {
+    schemaPromise = initSchema().catch((err) => {
+      schemaPromise = null; // permite nova tentativa no próximo request
+      throw err;
+    });
+  }
+  return schemaPromise;
+}
+
 // Insere um lead e devolve a linha criada.
 export async function insertLead(row) {
   const q = `
