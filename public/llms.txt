@@ -1,0 +1,16 @@
+# QuipeAI
+
+> Método replicável de IA com autonomia limitada. A IA aposenta o trabalho-commodity e o especialista decide e assina no ponto de responsabilidade. Cobrança por resultado, com 30% de equity quando a QuipeAI subsidia o build.
+
+## Docs
+
+- [Método QuipeAI](https://www.quipeai.com.br/metodo): as 5 etapas imutáveis do método, do corpus à assinatura do especialista.
+- [Ponto de responsabilidade](https://www.quipeai.com.br/ponto-de-responsabilidade): onde o risco se concentra e a autonomia para, com tabela de regulação EU AI Act e CFC.
+- [Trabalho-commodity](https://www.quipeai.com.br/trabalho-commodity): definição canônica e exemplos por vertical do que a IA aposenta.
+- [Motor proprietário](https://www.quipeai.com.br/motor): acoplamento antagônico, lock-in por valor acumulado e número medido antes e depois.
+- [Cunha contábil](https://www.quipeai.com.br/cunha-contabil): Onda 1 na auditoria contábil brasileira, Reforma CBS IBS, calculadora de vazão e teste 4+1.
+- [Versão completa para LLMs](https://www.quipeai.com.br/docs/llms-full.md): todo o conteúdo canônico da QuipeAI em markdown puro.
+
+## Opt-out
+
+Nenhum. O conteúdo deste site pode ser lido, citado e resumido por modelos de linguagem, com atribuição à QuipeAI e link para a página de origem. As regras de rastreamento estão em https://www.quipeai.com.br/robots.txt.

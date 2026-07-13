@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-obsidian text-white font-body antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply font-title;
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .card {
+    @apply rounded-card border border-borda bg-card p-6 shadow-card;
+  }
+
+  .card-2 {
+    @apply rounded-card2 border border-borda bg-card2 p-5;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-neural;
+  }
+
+  .btn-primary {
+    @apply inline-block rounded-card2 bg-neural px-6 py-3 font-title font-bold text-obsidian transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white;
+  }
+
+  .btn-secondary {
+    @apply inline-block rounded-card2 border border-borda bg-card2 px-6 py-3 font-title font-semibold text-white transition hover:border-neural focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neural;
+  }
+
+  .link-inline {
+    @apply text-blueLight underline underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neural;
+  }
+
+  .skip-link {
+    @apply absolute left-4 top-4 z-[60] -translate-y-24 rounded-card2 bg-neural px-4 py-2 font-title font-bold text-obsidian transition focus:translate-y-0;
+  }
+
+  .numero-serif {
+    @apply font-serif text-4xl font-bold text-neural;
+  }
+
+  .quote-serif {
+    @apply font-serif italic text-xl text-white;
+  }
+}
+
+/* Reveal on scroll do diagrama do motor. CSS puro, sem SVG externo. */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
