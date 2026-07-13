@@ -22,7 +22,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  // Cada rota define <title>/description completos conforme SEO-AGEO.md §5
   title: "QuipeAI",
+  openGraph: { siteName: "QuipeAI", locale: "pt_BR", type: "website" },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
