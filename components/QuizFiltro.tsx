@@ -76,6 +76,7 @@ export default function QuizFiltro() {
   useEffect(() => {
     if (etapa !== "resultado" || classificacao !== "ICP-A") return;
     function aoReceberMensagem(evento: MessageEvent) {
+      if (evento.origin !== "https://calendly.com") return;
       if (
         typeof evento.data === "object" &&
         evento.data !== null &&

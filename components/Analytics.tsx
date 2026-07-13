@@ -4,6 +4,7 @@ import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 import { capturarUtm } from "@/lib/utm";
+import { trackGa4 } from "@/lib/analytics";
 
 const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID;
@@ -36,8 +37,9 @@ export default function Analytics() {
     if (typeof window.fbq === "function") {
       window.fbq("track", "PageView");
     }
-    if (GA4_ID && typeof window.gtag === "function") {
-      window.gtag("event", "page_view", { page_path: pathname });
+    if (GA4_ID) {
+      // trackGa4 enfileira no dataLayer se o gtag.js ainda não carregou.
+      trackGa4("page_view", { page_path: pathname });
     }
   }, [pathname]);
 
