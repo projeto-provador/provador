@@ -167,6 +167,10 @@ O projeto já vem pronto para o Vercel:
    | `ADMIN_TOKEN` | ⛔ | para habilitar `GET /api/leads` |
 
 4. **Deploy**. Não há build step (front estático + funções).
+   > **Deployment Protection:** por padrão o Vercel pode deixar o projeto atrás
+   > de login (redirect para `vercel.com/sso-api`). Para deixar a landing
+   > pública: **Settings → Deployment Protection → Vercel Authentication →
+   > desligar** (ou restringir só a Preview).
 5. Rode o schema **uma vez** (ou deixe o auto-init cuidar no 1º request):
    ```bash
    psql "$DATABASE_URL" -f server/schema.sql
