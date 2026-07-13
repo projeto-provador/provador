@@ -1,0 +1,11 @@
+node_modules/
+.env
+.env.local
+*.log
+npm-debug.log*
+
+# open-wa session data
+.wwebjs_auth/
+_IGNORE_*/
+session*.data.json
+tokens/

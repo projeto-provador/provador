@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuipeAI · Kit de Qualificação de ICP (demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ===== OBSIDIAN CLARO — design tokens ===== */
+  :root{
+    --bg:#F5F7FC; --bg2:#EAEEF7; --surface:#FFFFFF; --surface2:#F0F3FA;
+    --ink:#0B1120; --ink2:#33405C; --muted:#6B7A94; --line:#E2E7F1;
+    --neural:#00DC82; --green-ink:#009E5A; --blue:#3B82F6; --blue-ink:#2560E0;
+    --amber:#D98A00; --rose:#E5484D;
+    --shadow:0 8px 30px rgba(16,24,40,.07); --shadow-sm:0 2px 10px rgba(16,24,40,.05);
+    --r:18px; --pad:clamp(1.2rem,4vw,2.4rem);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;color:var(--ink);
+    background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);
+    background-attachment:fixed;min-height:100vh;line-height:1.5;
+  }
+  h1,h2,h3,.display{font-family:'Poppins',sans-serif;letter-spacing:-.015em}
+  .wrap{max-width:640px;margin:0 auto;padding:var(--pad)}
+  .brand{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.4rem}
+  .logo{font-family:'Poppins';font-weight:800;font-size:1.35rem;color:var(--ink)}
+  .logo .ai{color:var(--green-ink)}
+  .kick{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-ink)}
+  .glyph{width:34px;height:34px;opacity:.5}
+  /* hub */
+  .hero h1{font-size:clamp(1.7rem,5vw,2.5rem);font-weight:800;line-height:1.08;margin-bottom:.7rem}
+  .hero .accent{color:var(--green-ink)}
+  .hero p{color:var(--muted);font-size:1.05rem;max-width:52ch;margin-bottom:1.6rem}
+  .choices{display:grid;gap:1rem}
+  .choice{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1.4rem 1.5rem;text-align:left;cursor:pointer;box-shadow:var(--shadow-sm);transition:transform .15s,box-shadow .15s,border-color .15s;display:block;width:100%;font-family:inherit}
+  .choice:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--neural)}
+  .choice:focus-visible{outline:2px solid var(--neural);outline-offset:2px}
+  .choice .tag{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .6rem;border-radius:999px;margin-bottom:.6rem}
+  .choice .tag.n{background:rgba(0,220,130,.14);color:var(--green-ink)}
+  .choice .tag.b{background:rgba(59,130,246,.14);color:var(--blue-ink)}
+  .choice h3{font-size:1.22rem;font-weight:700;margin-bottom:.3rem}
+  .choice p{color:var(--muted);font-size:.95rem}
+  .choice .arr{float:right;color:var(--muted);font-size:1.3rem;margin-top:-1.8rem}
+  /* quiz */
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:clamp(1.4rem,4vw,2.2rem)}
+  .topbar{display:flex;align-items:center;gap:.8rem;margin-bottom:1.4rem}
+  .back{background:none;border:0;color:var(--muted);cursor:pointer;font-size:1.4rem;line-height:1;padding:.2rem .4rem;border-radius:8px}
+  .back:hover{background:var(--surface2);color:var(--ink)}
+  .bar{flex:1;height:7px;background:var(--surface2);border-radius:999px;overflow:hidden}
+  .bar > i{display:block;height:100%;background:var(--neural);width:0;transition:width .3s}
+  .step{font-size:.78rem;color:var(--muted);font-weight:600;white-space:nowrap}
+  .qeyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-ink);margin-bottom:.6rem}
+  .qtitle{font-size:clamp(1.25rem,3.4vw,1.6rem);font-weight:700;line-height:1.2;margin-bottom:.4rem}
+  .qhelp{color:var(--muted);font-size:.95rem;margin-bottom:1.3rem}
+  .opts{display:grid;gap:.7rem}
+  .opt{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:1rem 1.15rem;text-align:left;cursor:pointer;font-family:inherit;font-size:1rem;color:var(--ink);transition:.12s;display:flex;align-items:center;gap:.8rem}
+  .opt:hover{border-color:var(--neural);background:#FAFEFC}
+  .opt:focus-visible{outline:2px solid var(--neural);outline-offset:2px}
+  .opt.sel{border-color:var(--neural);background:rgba(0,220,130,.07);box-shadow:inset 0 0 0 1px var(--neural)}
+  .opt .dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--line);flex:0 0 auto;transition:.12s}
+  .opt.sel .dot{border-color:var(--neural);background:var(--neural);box-shadow:inset 0 0 0 3px #fff}
+  .field{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+  .field label{font-size:.86rem;font-weight:600;color:var(--ink2)}
+  .field input{border:1.5px solid var(--line);border-radius:12px;padding:.8rem 1rem;font-family:inherit;font-size:1rem;color:var(--ink);background:var(--surface)}
+  .field input:focus{outline:0;border-color:var(--neural)}
+  .btn{background:var(--ink);color:#fff;border:0;border-radius:12px;padding:.95rem 1.4rem;font-family:'Poppins';font-weight:700;font-size:1rem;cursor:pointer;width:100%;transition:.15s}
+  .btn:hover{background:#1a2540}
+  .btn.green{background:var(--neural);color:var(--ink)}
+  .btn.green:hover{background:#00c574}
+  .btn.ghost{background:transparent;color:var(--ink2);border:1.5px solid var(--line)}
+  .btn.ghost:hover{background:var(--surface2)}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  .mt{margin-top:1rem}
+  .foot{text-align:center;color:var(--muted);font-size:.76rem;margin-top:1.6rem;line-height:1.5}
+  .demo-note{margin-top:1rem;background:rgba(59,130,246,.08);border:1px dashed var(--blue);border-radius:12px;padding:.7rem .9rem;color:var(--blue-ink);font-size:.8rem}
+  /* result */
+  .res-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:'Poppins';font-weight:800;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;padding:.45rem .9rem;border-radius:999px;margin-bottom:1rem}
+  .res-A{background:rgba(0,220,130,.15);color:var(--green-ink)}
+  .res-B{background:rgba(59,130,246,.15);color:var(--blue-ink)}
+  .res-F{background:rgba(107,122,148,.16);color:var(--muted)}
+  .res h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:800;line-height:1.12;margin-bottom:.6rem}
+  .res p.sub{color:var(--ink2);font-size:1.02rem;margin-bottom:1.2rem}
+  .xray{display:grid;gap:.8rem;margin:1.2rem 0}
+  .metric{background:var(--surface2);border-radius:14px;padding:1rem 1.2rem;display:flex;align-items:baseline;gap:1rem}
+  .metric .v{font-family:'Poppins';font-weight:800;font-size:1.9rem;color:var(--green-ink);line-height:1;flex:0 0 auto}
+  .metric .v.blue{color:var(--blue-ink)} .metric .v.amber{color:var(--amber)}
+  .metric p{color:var(--ink2);font-size:.92rem;line-height:1.4}
+  .flag{background:#FFF8EC;border:1px solid #F3D89B;border-radius:12px;padding:.9rem 1.1rem;color:#7a5b12;font-size:.9rem;line-height:1.45;margin:.8rem 0}
+  .hr{height:1px;background:var(--line);margin:1.3rem 0}
+  .disc{color:var(--muted);font-size:.76rem;line-height:1.5;margin-top:.5rem}
+  /* impacto (o depois) */
+  .impact-band{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin:1rem 0}
+  .ib{background:linear-gradient(180deg,#fff,var(--surface2));border:1px solid var(--line);border-radius:14px;padding:1rem .9rem;text-align:center}
+  .ib .v{display:block;font-family:'Poppins';font-weight:800;font-size:1.75rem;color:var(--green-ink);line-height:1}
+  .ib .v.blue{color:var(--blue-ink)} .ib .v.amber{color:var(--amber)}
+  .ib small{display:block;color:var(--muted);font-size:.76rem;line-height:1.35;margin-top:.45rem}
+  /* storytelling */
+  .story{margin:1.2rem 0}
+  .st{border-radius:14px;padding:1.1rem 1.25rem}
+  .st.hoje{background:var(--surface2);border:1px solid var(--line)}
+  .st.depois{background:rgba(0,220,130,.08);border:1px solid rgba(0,220,130,.35)}
+  .st .lbl{font-family:'Poppins';font-weight:800;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:.35rem}
+  .st.hoje .lbl{color:var(--muted)} .st.depois .lbl{color:var(--green-ink)}
+  .st p{color:var(--ink2);font-size:.95rem;line-height:1.5}
+  .st-arrow{text-align:center;color:var(--neural);font-size:1.5rem;margin:.35rem 0;font-weight:700}
+  .doctrine{font-family:'Poppins';font-weight:700;font-style:italic;text-align:center;color:var(--ink);font-size:1.05rem;margin:1rem 0 .2rem}
+  @media(max-width:520px){ .impact-band{grid-template-columns:1fr} }
+  .hide{display:none!important}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">
+    <div class="logo">quipe<span class="ai">.ai</span></div>
+    <div class="kick" id="voice">Service-as-a-Software</div>
+  </div>
+
+  <!-- ===================== HUB ===================== -->
+  <section id="hub" class="hero">
+    <h1>A IA aposenta o trabalho-<span class="accent">commodity</span>. Você decide e assina.</h1>
+    <p>Descubra em minutos se o seu negócio ganha margem com o método QuipeAI — ou faça o diagnóstico grátis e veja quanto o trabalho-commodity custa hoje.</p>
+    <div class="choices">
+      <button class="choice" onclick="startFlow('diag')">
+        <span class="arr">→</span>
+        <span class="tag n">Diagnóstico grátis · ~2 min</span>
+        <h3>Quanto o trabalho-commodity custa à sua margem?</h3>
+        <p>Um raio-X da capacidade que você tem presa na parte-commodity e no time de juniores — com estimativa de alavancagem.</p>
+      </button>
+      <button class="choice" onclick="startFlow('icp')">
+        <span class="arr">→</span>
+        <span class="tag b">Sou ICP? · 60 segundos</span>
+        <h3>O método QuipeAI é para o seu negócio?</h3>
+        <p>Cinco perguntas. Na hora você descobre se é um encaixe forte, um caminho a nutrir, ou ainda não é o momento.</p>
+      </button>
+    </div>
+    <p class="foot">QuipeAI · @quipe.ai · @yo.gui.ia — suas respostas são usadas apenas para o diagnóstico e contato. Sem spam.</p>
+  </section>
+
+  <!-- ===================== QUIZ ===================== -->
+  <section id="quiz" class="card hide">
+    <div class="topbar">
+      <button class="back" id="backBtn" aria-label="Voltar" onclick="prev()">‹</button>
+      <div class="bar"><i id="barFill"></i></div>
+      <div class="step" id="stepLbl">1 / 5</div>
+    </div>
+    <div id="qbody"></div>
+  </section>
+
+  <!-- ===================== RESULT ===================== -->
+  <section id="result" class="card hide res"></section>
+</div>
+
+<script>
+/* =========================================================================
+   QUIPEAI — KIT DE QUALIFICAÇÃO DE ICP
+   -------------------------------------------------------------------------
+   O score é calculado no navegador; o lead é persistido no backend
+   (Postgres) via POST /api/leads, que também dispara e-mail e WhatsApp.
+   Veja server/ e README.md. Se a API estiver fora do ar, o lead é
+   guardado localmente (localStorage) como fallback e o fluxo não quebra.
+   ========================================================================= */
+
+/* ---------- CONFIG GERAL ---------- */
+var CALENDLY = 'https://calendly.com/projeto-quipeai/30min';
+// Base da API. Vazio = mesma origem que serve esta página. Aponte para o
+// backend (ex.: 'https://api.seudominio.com') se a landing estiver hospedada
+// separada do servidor.
+var API_BASE = '';
+
+/* ---------- CONFIG DAS PERGUNTAS ---------- */
+// value: pontos (0..2) para Q1-Q4; gate: nível 0..3 para Q5.
+var FILTER = {
+  q1:{ eyebrow:'O trabalho-commodity', title:'A parte-commodity é feita por gente cara?',
+       help:'Conciliar, triar, formatar, rascunhar, primeira-versão.', key:'q1', opts:[
+    {t:'Sim — um especialista caro OU um time de juniores que treino e pago', v:2},
+    {t:'Um pouco', v:1},
+    {t:'Não / já é automatizado', v:0}]},
+  q2:{ eyebrow:'A curadoria', title:'A curadoria do especialista é o selo de qualidade que o cliente paga?',
+       help:'É o que separa a sua entrega de um output genérico de IA.', key:'q2', opts:[
+    {t:'Sim, é o nosso ativo', v:2},
+    {t:'Mais ou menos', v:1},
+    {t:'Não faz diferença', v:0}]},
+  q3:{ eyebrow:'A responsabilidade', title:'Se a entrega sai errada, há sempre um profissional que assume?',
+       help:'Alguém que decide e assina — e responde pela consequência.', key:'q3', opts:[
+    {t:'Sim, sempre', v:2},
+    {t:'Não / o cliente aceita o erro', v:0}]},
+  q4:{ eyebrow:'A alavancagem', title:'Entregar 2–3x mais sem contratar viraria mais faturamento/margem?',
+       help:'Ou seja: o ganho de vazão se converte em dinheiro para você.', key:'q4', opts:[
+    {t:'Sim, diretamente', v:2},
+    {t:'Talvez', v:1},
+    {t:'Não', v:0}]},
+  q5:{ eyebrow:'O gargalo', title:'Quantos projetos você recusou nos últimos 6 meses por falta de mão?',
+       help:'Esta é a pergunta que separa capacidade de demanda.', key:'q5', gate:true, opts:[
+    {t:'Nenhum', g:0},
+    {t:'1 a 3', g:1},
+    {t:'4 a 10', g:2},
+    {t:'Mais de 10', g:3}]}
+};
+
+// Perguntas de dimensionamento (só no diagnóstico) — alimentam o raio-X.
+var DIM = {
+  dA:{ eyebrow:'Dimensão', title:'Quantos especialistas caros (sócios/seniores) tocam a entrega?', key:'dA', opts:[
+    {t:'1', v:1},{t:'2 a 3', v:3},{t:'4 a 8', v:6},{t:'9 ou mais', v:10}]},
+  dB:{ eyebrow:'Dimensão', title:'Quanto do tempo deles vai para a parte-commodity?', key:'dB', opts:[
+    {t:'Menos de 20%', v:15},{t:'20% a 40%', v:30},{t:'40% a 60%', v:50},{t:'Mais de 60%', v:70}]},
+  dC:{ eyebrow:'O time de juniores', title:'Você mantém juniores para essa parte?', key:'dC', opts:[
+    {t:'Sim, vários', v:2},{t:'Sim, poucos', v:1},{t:'Não', v:0}]},
+  dD:{ eyebrow:'O risco do investimento', title:'Já perdeu júnior treinado (saída) ou teve não-adaptação depois de investir no treino?', key:'dD', opts:[
+    {t:'Sim, várias vezes', v:2},{t:'Às vezes', v:1},{t:'Não', v:0}]},
+  dE:{ eyebrow:'O modelo', title:'Pagaria por resultado — com garantia e a sua assinatura no final?', key:'dE', opts:[
+    {t:'Sim', v:2},{t:'Talvez', v:1},{t:'Não', v:0}]}
+};
+
+var FLOWS = {
+  icp:{ voice:'@quipe.ai · Qualificação', strictGate:true, capture:'onA',
+        steps:['q1','q2','q3','q4','q5'] },
+  diag:{ voice:'@yo.gui.ia · Diagnóstico', strictGate:false, capture:'always',
+        steps:['q1','q2','q3','q4','q5','dA','dB','dC','dD','dE'] }
+};
+
+/* ---------- ESTADO ---------- */
+var state = { flow:null, step:0, answers:{}, lead:{} };
+function Q(id){ return FILTER[id] || DIM[id]; }
+
+/* ---------- NAVEGAÇÃO ---------- */
+function startFlow(f){
+  state.flow=f; state.step=0; state.answers={}; state.lead={};
+  document.getElementById('voice').textContent = FLOWS[f].voice;
+  show('quiz'); renderStep();
+}
+function show(id){
+  ['hub','quiz','result'].forEach(function(s){ document.getElementById(s).classList.toggle('hide', s!==id); });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function totalSteps(){ var f=FLOWS[state.flow]; return f.steps.length + (f.capture==='always'?1:0); }
+function renderStep(){
+  var f=FLOWS[state.flow];
+  var isCapture = (state.step === f.steps.length); // capture step (diag)
+  document.getElementById('backBtn').style.visibility = state.step>0 ? 'visible':'hidden';
+  var frac = (state.step) / (totalSteps()-1);
+  document.getElementById('barFill').style.width = Math.min(100, Math.round(frac*100)) + '%';
+  document.getElementById('stepLbl').textContent = (state.step+1) + ' / ' + totalSteps();
+  var body = document.getElementById('qbody');
+
+  if(isCapture){ renderCapture(body); return; }
+
+  var id = f.steps[state.step]; var q = Q(id);
+  var sel = state.answers[q.key];
+  var html = '<div class="qeyebrow">'+q.eyebrow+'</div><div class="qtitle">'+q.title+'</div>';
+  if(q.help) html += '<div class="qhelp">'+q.help+'</div>';
+  html += '<div class="opts">';
+  q.opts.forEach(function(o,i){
+    var val = q.gate ? o.g : o.v;
+    var isSel = (sel!==undefined && sel.i===i);
+    html += '<button class="opt'+(isSel?' sel':'')+'" onclick="pick(\''+q.key+'\','+i+','+val+','+(q.gate?1:0)+')">'
+          + '<span class="dot"></span><span>'+o.t+'</span></button>';
+  });
+  html += '</div>';
+  body.innerHTML = html;
+}
+function pick(key,i,val,isGate){
+  state.answers[key] = { i:i, v:val, gate:!!isGate };
+  // avança automaticamente após pequena pausa (sensação premium)
+  setTimeout(next, 180);
+}
+function next(){
+  var f=FLOWS[state.flow];
+  var lastQuestion = f.steps.length - 1;
+  // exige resposta na etapa de pergunta atual
+  if(state.step <= lastQuestion){
+    var id=f.steps[state.step];
+    if(state.answers[Q(id).key]===undefined) return; // não avança sem resposta
+  }
+  var max = totalSteps()-1;
+  if(state.step < max){ state.step++; renderStep(); }
+  else { finish(); }
+}
+function prev(){ if(state.step>0){ state.step--; renderStep(); } }
+
+/* ---------- CAPTURA DE LEAD ---------- */
+function renderCapture(body){
+  body.innerHTML =
+    '<div class="qeyebrow">Quase lá</div>'+
+    '<div class="qtitle">Para onde enviamos o seu diagnóstico?</div>'+
+    '<div class="qhelp">Sem spam. Usamos só para te mandar o raio-X e, se fizer sentido, conversar.</div>'+
+    '<div class="field"><label>Nome</label><input id="f_nome" placeholder="Seu nome" autocomplete="name"></div>'+
+    '<div class="field"><label>E-mail ou WhatsApp</label><input id="f_contato" placeholder="voce@empresa.com ou (11) 9...." autocomplete="email"></div>'+
+    '<div class="field"><label>Empresa / área</label><input id="f_empresa" placeholder="Ex.: escritório contábil, banca jurídica..." autocomplete="organization"></div>'+
+    '<div class="field"><label>Seu papel (opcional)</label><input id="f_cargo" placeholder="Sócio, controller, diretor..."></div>'+
+    '<button class="btn green mt" onclick="captureNext()">Ver meu diagnóstico →</button>';
+}
+function captureNext(){
+  state.lead = {
+    nome:val('f_nome'), contato:val('f_contato'),
+    empresa:val('f_empresa'), cargo:val('f_cargo')
+  };
+  finish();
+}
+function val(id){ var e=document.getElementById(id); return e?e.value.trim():''; }
+
+/* ---------- SCORING ---------- */
+function score(){
+  var a=state.answers;
+  var q1=(a.q1||{}).v||0, q2=(a.q2||{}).v||0, q3=(a.q3||{}).v||0, q4=(a.q4||{}).v||0;
+  var base=q1+q2+q3+q4;               // 0..8
+  var gate=(a.q5||{}).v||0;           // 0..3
+  var respOK=(q3===2), curOK=(q2>=1);
+  var strict=FLOWS[state.flow].strictGate;
+  var tier, reason;
+  if(gate===0){
+    // eliminatória de demanda — assimétrica
+    if(strict){ tier='FORA'; reason='demanda'; }
+    else { tier='B'; reason='demanda'; }
+  } else if(base>=6 && respOK && curOK && gate>=1){
+    tier='A'; reason='forte';
+  } else if(base>=4){
+    tier='B'; reason='parcial';
+  } else {
+    tier='FORA'; reason='filtro';
+  }
+  return { tier:tier, reason:reason, base:base, gate:gate };
+}
+
+/* ---------- RAIO-X (só diagnóstico) ---------- */
+function xray(){
+  var a=state.answers;
+  var seniors=(a.dA||{}).v||1;
+  var pctCommodity=(a.dB||{}).v||0;
+  var gate=(a.q5||{}).v||0;
+  var recused = [0,2,7,12][gate];      // ponto médio da faixa
+  var juniors=(a.dC||{}).v||0, churn=(a.dD||{}).v||0;
+  return { seniors:seniors, pctCommodity:pctCommodity, recused:recused, juniors:juniors, churn:churn };
+}
+
+/* ---------- RESULTADO ---------- */
+function finish(){
+  var s=score();
+  var payload = {
+    flow:state.flow, tier:s.tier, score:s.base, gate:s.gate,
+    answers:state.answers, lead:state.lead,
+    xray: state.flow==='diag' ? xray() : null,
+    ts:new Date().toISOString()
+  };
+  submitLead(payload);
+  renderResult(s, payload);
+}
+function renderResult(s, payload){
+  var r=document.getElementById('result');
+  var badge = s.tier==='A' ? '<span class="res-badge res-A">● Encaixe forte · ICP-A</span>'
+            : s.tier==='B' ? '<span class="res-badge res-B">● Caminho a construir · ICP-B</span>'
+            : '<span class="res-badge res-F">● Ainda não é o momento</span>';
+  var head, sub, cta;
+
+  if(s.tier==='A'){
+    head='Seu negócio ganha margem com o método.';
+    sub='Você tem especialista caro na parte-commodity, curadoria valorizada, responsabilidade que alguém assume — e, principalmente, <b>demanda represada</b>. É exatamente onde a alavancagem vira EBITDA.';
+    cta = agendaCTA('Vamos desenhar o seu piloto', 'green');
+  } else if(s.tier==='B'){
+    if(s.reason==='demanda'){
+      head='Você passa no filtro — mas o gargalo parece ser demanda.';
+      sub='O modelo devolve capacidade. Como hoje você não recusa projetos por falta de mão, o ganho maior vem depois que a demanda apertar. Vale conversar e preparar o terreno.';
+    } else {
+      head='Há encaixe — mas ainda falta uma peça.';
+      sub='O método faz sentido para você; um ou outro critério ainda não está maduro. O caminho é conversar e provar o ganho num piloto menor.';
+    }
+    cta = agendaCTA('Vamos mapear o seu caminho', 'dark');
+  } else {
+    if(s.reason==='demanda'){
+      head='Seu foco agora é vender mais, não produzir mais.';
+      sub='Você não recusa projetos por falta de mão — logo, capacidade extra viraria ociosidade, não margem. Quando a demanda apertar, o método passa a fazer sentido.';
+    } else {
+      head='Por ora, o método não é o encaixe certo.';
+      sub='Falta um dos pilares (curadoria que o cliente paga, responsabilidade que alguém assume, ou vazão que vira margem). Sem eles, não há prêmio por resultado a capturar.';
+    }
+    cta = agendaCTA('Mesmo assim, quero conversar', 'ghost');
+  }
+
+  var html = badge + '<h2>'+head+'</h2><p class="sub">'+sub+'</p>';
+
+  // Raio-X do diagnóstico
+  if(state.flow==='diag'){
+    var x=payload.xray;
+    html += '<div class="hr"></div><div class="qeyebrow">Seu raio-X</div>';
+    html += '<div class="xray">';
+    html += '<div class="metric"><span class="v">'+x.pctCommodity+'%</span><p>da capacidade dos seus especialistas está presa na <b>parte-commodity</b> — trabalho que a IA sob a sua curadoria pode aposentar.</p></div>';
+    html += '<div class="metric"><span class="v blue">~'+x.recused+'</span><p>projetos você recusou no semestre por falta de mão. É a <b>fila</b> que a capacidade liberada endereça — sem contratar.</p></div>';
+    if(x.juniors>0 && x.churn>0){
+      html += '<div class="flag">Você investe em treinar juniores <b>e já perdeu esse investimento</b> (saída ou não-adaptação). A camada de IA reduz essa dependência e o risco do investimento em pessoas — o especialista sobe o júnior mais rápido, em vez de apostar tudo nele.</div>';
+    }
+    html += '</div>';
+    html += '<p class="disc">Estimativas ilustrativas com base nas suas respostas — não são promessa de resultado. O número real sai de um piloto medido.</p>';
+
+    // ----- DADOS DE IMPACTO: o "depois" calculado -----
+    var uplift = Math.round(x.pctCommodity * 0.75); // parcela realista da capacidade devolvida
+    var filaTxt = x.recused>0 ? ('~'+x.recused) : 'a próxima onda de';
+    html += '<div class="hr"></div><div class="qeyebrow">O depois — o que muda</div>';
+    html += '<div class="impact-band">';
+    html += '<div class="ib"><span class="v">+'+uplift+'%</span><small>de capacidade sênior devolvida, sem contratar</small></div>';
+    html += '<div class="ib"><span class="v blue">'+filaTxt+'</span><small>projetos/semestre que você recusava passam a caber</small></div>';
+    html += '<div class="ib"><span class="v amber">R$ 0</span><small>de novo investimento em treinar e correr o risco de perder júnior</small></div>';
+    html += '</div>';
+
+    // ----- STORYTELLING antes -> depois -----
+    html += '<div class="story">';
+    html += '<div class="st hoje"><span class="lbl">Hoje</span><p>Seu especialista caro gasta <b>~'+x.pctCommodity+'%</b> do tempo conciliando, triando e rascunhando. Você recusa '+(x.recused>0?('<b>~'+x.recused+'</b> projetos'):'projetos') +' por falta de mão. E cada júnior é uma aposta cara que pode sair ou não se adaptar.</p></div>';
+    html += '<div class="st-arrow">↓</div>';
+    html += '<div class="st depois"><span class="lbl">Depois</span><p>A IA aposenta a parte-commodity. Seu especialista sobe para <b>curar e assinar</b> — o selo de qualidade que o cliente paga. A fila que você recusava vira faturamento. O júnior <b>acelera em vez de virar risco</b>. E você cobra <b>por resultado</b>, com a sua assinatura garantindo a entrega.</p></div>';
+    html += '</div>';
+    html += '<p class="doctrine">Você decide e assina. A máquina levanta o peso.</p>';
+  }
+
+  html += '<div class="hr"></div>' + cta;
+  html += '<button class="btn ghost mt" onclick="reset()">Recomeçar</button>';
+
+  // Status do envio ao backend (atualizado por updateSendStatus).
+  html += '<p id="sendStatus" class="foot" style="margin-top:1rem">Enviando suas respostas…</p>';
+
+  html += '<p class="foot">QuipeAI · o método é a ponta de lança; o resultado é o produto.</p>';
+  r.innerHTML = html;
+  show('result');
+}
+function reset(){ state={flow:null,step:0,answers:{},lead:{}}; document.getElementById('voice').textContent='Service-as-a-Software'; show('hub'); }
+
+/* ---------- CTA DE AGENDA (Calendly) ---------- */
+function agendaCTA(label, variant){
+  var cls = variant==='green' ? 'btn green' : variant==='ghost' ? 'btn ghost' : 'btn';
+  // prefill de nome/e-mail quando o lead já foi capturado (diagnóstico)
+  var q=[]; var l=state.lead||{};
+  if(l.nome) q.push('name='+encodeURIComponent(l.nome));
+  if(l.contato && l.contato.indexOf('@')>-1) q.push('email='+encodeURIComponent(l.contato));
+  var url = CALENDLY + (q.length?('?'+q.join('&')):'');
+  return '<a class="'+cls+'" style="display:block;text-align:center;text-decoration:none" '
+       + 'href="'+url+'" target="_blank" rel="noopener" '
+       + 'onclick="openAgenda()">📅 '+label+' → agendar 30 min</a>';
+}
+function openAgenda(){
+  try{ console.log('[QuipeAI demo] agenda aberta:', CALENDLY, state.lead); }catch(e){}
+}
+
+/* ---------- ENVIO AO BACKEND ---------- */
+function submitLead(payload){
+  updateSendStatus('sending');
+  fetch(API_BASE + '/api/leads', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(payload)
+  })
+  .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ return {ok:r.ok, body:j}; }); })
+  .then(function(res){
+    if(res.ok && res.body && res.body.ok){
+      console.log('[QuipeAI] lead salvo:', res.body.id);
+      updateSendStatus('ok');
+    } else {
+      var msg = (res.body && res.body.error) || ('HTTP '+ (res.body ? '' : 'erro'));
+      console.warn('[QuipeAI] backend recusou o lead:', msg);
+      saveLocalFallback(payload);
+      updateSendStatus('error', msg);
+    }
+  })
+  .catch(function(err){
+    console.warn('[QuipeAI] API indisponível, salvando fallback local:', err.message);
+    saveLocalFallback(payload);
+    updateSendStatus('offline');
+  });
+  return true;
+}
+function saveLocalFallback(payload){
+  try{
+    var arr = JSON.parse(localStorage.getItem('quipeai_leads')||'[]');
+    arr.push(payload); localStorage.setItem('quipeai_leads', JSON.stringify(arr));
+  }catch(e){ /* localStorage indisponível — ignora */ }
+}
+function updateSendStatus(kind, detail){
+  var el = document.getElementById('sendStatus');
+  if(!el) return;
+  var map = {
+    sending:['Enviando suas respostas…','var(--muted)'],
+    ok:['✅ Recebido! Em breve entramos em contato.','var(--green-ink)'],
+    error:['⚠️ Não conseguimos registrar agora'+(detail?(': '+detail):'')+'. Guardamos localmente e você pode tentar de novo.','var(--amber)'],
+    offline:['⚠️ Você parece estar offline. Guardamos suas respostas neste dispositivo.','var(--amber)']
+  };
+  var m = map[kind] || map.sending;
+  el.textContent = m[0]; el.style.color = m[1];
+}
+/* teclado: Enter avança no formulário de captura */
+document.addEventListener('keydown',function(e){
+  if(e.key==='Enter' && document.getElementById('f_nome')){ e.preventDefault(); captureNext(); }
+});
+</script>
+</body>
+</html>
