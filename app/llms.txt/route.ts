@@ -22,6 +22,9 @@ dele é o selo que o cliente paga; (3) errar tem consequência que ele assume; (
 vira mais margem. Regulado primeiro (contábil/fiscal, jurídico, pericial, saúde).
 
 ## Páginas
+- [Método (Revolução 5.0)](https://quipeai.com.br/metodo): o método e as 4 perguntas do ICP.
+- [Produtos](https://quipeai.com.br/produtos): execuções do método, com prova.
+- [Founder — Curva C](https://quipeai.com.br/founder): autoridade e tese contrária.
 - [Contato](https://quipeai.com.br/contato): piloto — "se não entregar, você não paga".
 
 ## Contato

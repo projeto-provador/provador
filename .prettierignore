@@ -4,5 +4,6 @@ out
 pnpm-lock.yaml
 next-env.d.ts
 
-# docs canônicos do owner — não reformatar
+# docs canônicos do owner e conteúdo editorial — não reformatar
 *.md
+*.mdx

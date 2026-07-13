@@ -50,14 +50,21 @@ Legenda esforço (E): S ≤1h · M ≤4h · L = quebrar em subtarefas.
 
 ## ONDA 1 — Autoridade e mensagem (doutrina vira páginas citáveis)
 
-- [ ] **1.1 · /metodo** — definição answer-first + 4 perguntas (checklist) + arco + moat + modelo de receita + FAQ (schema) (`SPEC §2`, `CONTENT §4,§6,§10`). `P1 · L`
+- [x] **1.1 · /metodo** — definição answer-first + 4 perguntas (checklist) + arco + moat + modelo de receita + FAQ (schema) (`SPEC §2`, `CONTENT §4,§6,§10`). `P1 · L`
+  - feito: answer-first + 4 perguntas + passos + arco + moat + receita + FAQ/schema; TODO(copy) no gate de equity. (2026-07-13)
   - DoD: FAQPage schema casa com o FAQ visível; resposta extraível no topo; AA nos dois temas.
-- [ ] **1.2 · /founder** — bio + tese contrária + ponto de vista + schema Person (`SPEC §3`, `CONTENT §11`). `TODO(copy)` do owner. `P1 · M`
-- [ ] **1.3 · /produtos (índice)** — grid enquadrando produtos como execuções do método; schema ItemList (`SPEC §4`). `P1 · M`
+- [x] **1.2 · /founder** — bio + tese contrária + ponto de vista + schema Person (`SPEC §3`, `CONTENT §11`). `TODO(copy)` do owner. `P1 · M`
+  - feito: bio factual + tese contrária + ideias-âncora + schema Person; tom "yogue" e prova social aguardam owner (TODO). (2026-07-13)
+- [x] **1.3 · /produtos (índice)** — grid enquadrando produtos como execuções do método; schema ItemList (`SPEC §4`). `P1 · M`
+  - feito: grid enquadrando execuções do método; ItemList só com publicados; cards sem link até haver prova. (2026-07-13)
 - [ ] **1.4 · /produtos/[slug] (MDX)** — 1–2 produtos com problema/método/**prova**(`TODO(prova)`)/CTA; frontmatter tipado; schema Product (`SPEC §4`). `P1 · L`
-- [ ] **1.5 · FAQ global + schema** — componente `Faq` reutilizável (abre sem JS) nas páginas-chave (`DESIGN §9`, `SEO-AGEO §6`). `P1 · M`
-- [ ] **1.6 · OG por página** — gerar OG das novas rotas (método/founder/produtos). `P1 · S`
-- [ ] **1.7 · Internal linking** — método ↔ produtos ↔ founder ↔ contato; breadcrumbs. `P1 · S`
+  - parcial (2026-07-13): pipeline MDX + registry tipado + schema Product prontos; 3 drafts aguardam problema/método/PROVA do owner (published:false).
+- [x] **1.5 · FAQ global + schema** — componente `Faq` reutilizável (abre sem JS) nas páginas-chave (`DESIGN §9`, `SEO-AGEO §6`). `P1 · M`
+  - feito: componente Faq (details/summary, abre sem JS) + faqPageSchema reutilizados em / e /metodo. (2026-07-13)
+- [x] **1.6 · OG por página** — gerar OG das novas rotas (método/founder/produtos). `P1 · S`
+  - feito: OG geradas em build p/ metodo, founder, produtos via lib/og. (2026-07-13)
+- [x] **1.7 · Internal linking** — método ↔ produtos ↔ founder ↔ contato; breadcrumbs. `P1 · S`
+  - feito: nav completo + hero→/metodo + breadcrumbs com schema + sitemap/llms.txt atualizados; crawl interno 100% 200. (2026-07-13)
 
 ---
 

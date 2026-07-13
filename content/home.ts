@@ -10,8 +10,7 @@ export const HERO = {
   subtitle:
     "Não vendemos software nem “agentes autônomos” que prometem e somem. Instalamos um método: a IA faz o trabalho-commodity, o especialista carrega o julgamento e a assinatura, e você paga por resultado.",
   ctaPrimary: { label: "Peça um piloto", href: "/contato" },
-  // TODO: apontar para /metodo quando a rota publicar (Onda 1.1)
-  ctaSecondary: { label: "Veja como o método funciona", href: "#como-funciona" },
+  ctaSecondary: { label: "Veja como o método funciona", href: "/metodo" },
 } as const;
 
 /** CLAUDE.md §2 (aposta contrária) + PLAN.md §3 (dados de mercado com fonte nomeada) */

@@ -3,7 +3,13 @@
     "collect": {
       "startServerCommand": "pnpm start",
       "startServerReadyPattern": "Ready in",
-      "url": ["http://localhost:3000/", "http://localhost:3000/contato"],
+      "url": [
+        "http://localhost:3000/",
+        "http://localhost:3000/metodo",
+        "http://localhost:3000/produtos",
+        "http://localhost:3000/founder",
+        "http://localhost:3000/contato"
+      ],
       "numberOfRuns": 1,
       "settings": {
         "chromeFlags": "--no-sandbox --disable-dev-shm-usage",

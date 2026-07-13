@@ -14,10 +14,12 @@ export const TESE_UMA_LINHA = "IA que assume o resultado — com um humano que d
 
 /**
  * Navegação principal. Só rotas já publicadas — links mortos são proibidos
- * (CLAUDE.md §7). Adicionar item ao publicar cada rota da Onda 1/2:
- * /metodo · /produtos · /founder · /conteudo (SPEC.md §0).
+ * (CLAUDE.md §7). Falta /conteudo (Onda 2).
  */
 export const NAV_ITEMS: ReadonlyArray<{ href: string; label: string }> = [
+  { href: "/metodo", label: "Método" },
+  { href: "/produtos", label: "Produtos" },
+  { href: "/founder", label: "Founder" },
   { href: "/contato", label: "Contato" },
 ];
 

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MobileNav } from "@/components/sections/MobileNav";
 import { Button } from "@/components/ui/Button";
 import { NodeGlow } from "@/components/ui/NodeGlow";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
@@ -19,7 +20,7 @@ export function Header() {
           {SITE_NAME}
         </Link>
 
-        <nav aria-label="Navegação principal" className="flex items-center gap-6">
+        <nav aria-label="Navegação principal" className="flex items-center gap-6 max-md:hidden">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
@@ -33,9 +34,10 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <Button href="/contato" event="cta_piloto" className="max-sm:hidden">
+          <Button href="/contato" event="cta_piloto" className="max-md:hidden">
             Peça um piloto
           </Button>
+          <MobileNav />
         </div>
       </div>
     </header>
