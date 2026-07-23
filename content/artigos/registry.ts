@@ -87,7 +87,7 @@ export const ARTIGOS: ReadonlyArray<ArtigoMeta> = [
       {
         question: "Como fica o preço nesse modelo?",
         answer:
-          "Atrelado ao resultado. Na QuipeAI, com success fee de 30% de equity quando o build é subsidiado — o ganho do fornecedor vira o upside do cliente, não uma tarifa renegociável.",
+          "Atrelado ao resultado — o fornecedor cobra pelo desfecho, não por uma licença fixa.",
       },
     ],
     published: true,

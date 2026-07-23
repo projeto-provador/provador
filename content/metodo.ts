@@ -26,13 +26,12 @@ export const QUATRO_PERGUNTAS = {
   nota: "Regulado é a onda 1 (responsabilidade é lei, começo mais fácil); especialista não-regulado vem nas ondas seguintes. Tese larga, alvo estreito — uma vertical-cunha por vez.",
 } as const;
 
-/** CONTENT.md §10 — modelo de receita (enquadrar com transparência) */
+/** CONTENT.md §10 — modelo de receita */
 export const RECEITA = {
   eyebrow: "COMO COBRAMOS",
-  titulo: "Sócio do resultado",
+  titulo: "Cobrança por resultado",
   corpo:
-    "Cobramos por resultado. Quando a QuipeAI subsidia o build, entramos com 30% de equity — viramos sócios do desfecho. Isso alinha risco: nosso ganho é o seu upside, não uma tarifa renegociável. Repele quem só quer cortar custo; atrai quem topa dividir o ganho.",
-  // TODO(copy): critérios objetivos de qualificação para o modelo equity (gate do owner)
+    "Cobramos por resultado, não por licença de software. O incentivo fica atrelado ao desfecho do cliente, não a uma tarifa fixa.",
 } as const;
 
 /** CLAUDE.md §2 / CONTENT.md §6 — o moat, nomeado */

@@ -61,7 +61,7 @@
 3. **Como funciona (5 passos)** — versão estendida de `CONTENT.md §6`.
 4. **Arco** — frase-âncora literal (`CONTENT.md §3`).
 5. **Moat** — bloco de lock-in (`CONTENT.md §6`, fechamento): motor + acoplamento antagônico dados/SLM-LLM.
-6. **Modelo de receita** — enquadramento transparente do resultado + 30% equity (`CONTENT.md §10`). Critérios do gate de equity: `TODO(copy)` (pendência do owner).
+6. **Modelo de receita** — cobrança por resultado, sem participação societária (`CONTENT.md §10`).
 7. **FAQ** — perguntas de `CONTENT.md §12` (answer-first, extraível), com schema `FAQPage` 1:1.
 8. **CTA piloto** — `CONTENT.md §8`.
 
@@ -187,4 +187,3 @@
 | Tom da página founder | §3 |
 | Resend vs CRM / Plausible vs GA4 | §6, analytics |
 | OG images + favicon definitivos | §7 |
-| Critérios do gate de equity | §2.6 |

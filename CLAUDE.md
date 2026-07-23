@@ -22,7 +22,7 @@ QuipeAI é uma **fábrica de produto AI-first** brasileira (São Paulo). O core 
 
 - **Modelo:** Service-as-a-Software (entrega desfecho, não dashboard).
 - **Moat:** motor proprietário treinado no contexto do cliente + acoplamento antagônico entre dados e SLM/LLM + melhoria contínua específica do projeto. Trocar de fornecedor obrigaria a recomeçar o projeto do zero.
-- **Receita:** cobrança por resultado + **success fee de 30% de equity** quando a QuipeAI subsidia o build. "Não vendo software, viro sócio do resultado."
+- **Receita:** cobrança por resultado, não por licença de software.
 - **Aposta contrária:** contra os "agentes de IA autônomos que prometem e não entregam". A arquitetura certa nas verticais reguladas é **autonomia limitada com humano no ponto de responsabilidade**.
 - **Founder:** Luiz Guilherme Ramos Guimarães · persona **Curva C** · "yogue no corporativo".
 

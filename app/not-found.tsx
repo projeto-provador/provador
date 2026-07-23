@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Footer } from "@/components/sections/Footer";
 import { Header } from "@/components/sections/Header";
 import { Button } from "@/components/ui/Button";

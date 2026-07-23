@@ -34,8 +34,4 @@ export const IDEIAS_ANCORA = [
     termo: "Autonomia limitada",
     definicao: "A arquitetura certa — contra o agente autônomo.",
   },
-  {
-    termo: "Sócio do resultado",
-    definicao: "“Não vendo software, viro sócio do resultado.”",
-  },
 ] as const;

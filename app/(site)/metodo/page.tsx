@@ -107,7 +107,6 @@ export default function MetodoPage() {
             <p className="eyebrow">{RECEITA.eyebrow}</p>
             <h2 className="mt-3 text-2xl">{RECEITA.titulo}</h2>
             <p className="mt-4 leading-relaxed text-text-muted">{RECEITA.corpo}</p>
-            {/* TODO(copy): critérios objetivos do gate de equity (pendência do owner) */}
           </Card>
         </div>
       </section>

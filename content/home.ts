@@ -63,9 +63,8 @@ export const COMO_FUNCIONA = {
         "Revisa, decide e assina. É o ponto de responsabilidade — o accountability sink que o cliente paga.",
     },
     {
-      titulo: "Resultado + equity",
-      texto:
-        "Cobra-se pelo resultado, com 30% de equity quando a QuipeAI subsidia o build. Alinha risco: upside, não tarifa.",
+      titulo: "Resultado",
+      texto: "Cobra-se pelo resultado entregue. Alinha risco: seu upside, não uma tarifa fixa.",
     },
   ],
   lockIn:
@@ -115,7 +114,7 @@ export const FAQ = [
   },
   {
     question: "Como cobram?",
-    answer: "Por resultado; com 30% de equity quando subsidiamos o build.",
+    answer: "Por resultado — não por licença de software.",
   },
   {
     question: "Para quem serve?",

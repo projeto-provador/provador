@@ -64,7 +64,7 @@ Variação curta do subtítulo (se o layout pedir): *A IA aposenta o trabalho-co
 2. **Constrói o motor** — engine treinado no contexto do cliente, com autonomia limitada.
 3. **A IA executa a vazão** — o volume que trava o time vira throughput.
 4. **O especialista assina** — revisa, decide e assina. É o ponto de responsabilidade — o accountability sink que o cliente paga.
-5. **Resultado + equity** — cobra-se pelo resultado, com 30% de equity quando a QuipeAI subsidia o build. Alinha risco: upside, não tarifa.
+5. **Resultado** — cobra-se pelo resultado entregue. Alinha risco: upside do cliente, não tarifa fixa.
 
 **Bloco de lock-in (fechamento):** O lock-in não é a ferramenta. É o motor treinado no contexto do cliente + o acoplamento antagônico entre dados e SLM/LLM. Trocar de fornecedor obrigaria a recomeçar o projeto do zero. O valor está no motor, não no app.
 
@@ -104,16 +104,12 @@ Micro-copy: Na maioria das verticais que importam, agente autônomo é a arquite
 | **Ponto de responsabilidade** | onde o especialista decide e assina | tese, método |
 | **Motor** | o engine proprietário treinado no contexto = o moat | método, produtos |
 | **Autonomia limitada** | a arquitetura certa (vs. agente autônomo) | ecossistema, método |
-| **Sócio do resultado** | "não vendo software, viro sócio do resultado" | investidor, método (receita) |
 
 ---
 
 ## 10. Modelo de receita (como explicar — `/metodo`)
 
-Enquadrar com **transparência**, não esconder o equity:
-> Cobramos por resultado. Quando a QuipeAI subsidia o build, entramos com **30% de equity** — viramos sócios do desfecho. Isso alinha risco: nosso ganho é o seu upside, não uma tarifa renegociável. Repele quem só quer cortar custo; atrai quem topa dividir o ganho.
-
-`TODO(copy)`: critérios objetivos de qualificação para o modelo equity (o owner define o gate).
+> Cobramos por resultado, não por licença de software. O incentivo do fornecedor fica atrelado ao desfecho do cliente.
 
 ---
 
@@ -133,7 +129,7 @@ Perguntas que o cético e o LLM fazem (resposta answer-first, curta, extraível)
 
 - **O que é a QuipeAI?** — Fábrica de produto AI-first que instala um método: IA aposenta o trabalho-commodity, o especialista assina, cobra-se por resultado.
 - **Vocês fazem agentes de IA autônomos?** — Não. Nas verticais que importam, autonomia total é a arquitetura errada. Usamos autonomia limitada com humano no ponto de responsabilidade.
-- **Como cobram?** — Por resultado; com 30% de equity quando subsidiamos o build.
+- **Como cobram?** — Por resultado, não por licença de software.
 - **Para quem serve?** — Negócios onde um especialista caro faz trabalho-commodity, a curadoria dele é o selo pago, o erro tem consequência que ele assume, e mais vazão vira mais margem.
 - **Como começa?** — Um piloto sobre um caso real: em uma semana mostramos o resultado, com o especialista assinando. Se não entregar, você não paga.
 - **O que impede de copiarem vocês?** — O motor é treinado no contexto do cliente; o valor está nele, não na ferramenta. Trocar de fornecedor = recomeçar do zero.

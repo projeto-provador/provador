@@ -51,7 +51,8 @@ Legenda esforço (E): S ≤1h · M ≤4h · L = quebrar em subtarefas.
 ## ONDA 1 — Autoridade e mensagem (doutrina vira páginas citáveis)
 
 - [x] **1.1 · /metodo** — definição answer-first + 4 perguntas (checklist) + arco + moat + modelo de receita + FAQ (schema) (`SPEC §2`, `CONTENT §4,§6,§10`). `P1 · L`
-  - feito: answer-first + 4 perguntas + passos + arco + moat + receita + FAQ/schema; TODO(copy) no gate de equity. (2026-07-13)
+  - feito: answer-first + 4 perguntas + passos + arco + moat + receita + FAQ/schema. (2026-07-13)
+  - atualizado (2026-07-13): removida toda menção a success fee / 30% de equity do modelo de receita, a pedido do owner — cobrança agora é só "por resultado".
   - DoD: FAQPage schema casa com o FAQ visível; resposta extraível no topo; AA nos dois temas.
 - [x] **1.2 · /founder** — bio + tese contrária + ponto de vista + schema Person (`SPEC §3`, `CONTENT §11`). `TODO(copy)` do owner. `P1 · M`
   - feito: bio factual + tese contrária + ideias-âncora + schema Person; tom "yogue" e prova social aguardam owner (TODO). (2026-07-13)

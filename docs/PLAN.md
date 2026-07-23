@@ -109,7 +109,6 @@ Gatilhos de replanejamento em `SPEC.md §Gatilhos` e no audit: se após pré-ren
 | Falta de prova real (cases com número) | alta | alto | marcar `TODO(prova)`; priorizar 1–2 pilotos documentados na Onda 1 |
 | Tema claro quebra contraste do verde neon | média | médio | `DESIGN.md` já define `--accent-ink` acessível para texto no claro |
 | Copy escorregar para genérico | média | alto | copy sai só de `CONTENT.md`; DoD bloqueia promessa sem prova |
-| Success fee (30% equity) assustar sem contexto | média | médio | `/metodo` explica critérios e transparência; não esconder, enquadrar |
 | Concorrente (Enter) já domina jurídico | alta | médio | escolher verticais de ICP fora do jurídico (contábil/fiscal, perícia, saúde) |
 
 ---

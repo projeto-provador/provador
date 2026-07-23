@@ -8,8 +8,7 @@ const LLMS_TXT = `# QuipeAI
 > Fábrica de produto AI-first brasileira. Instala um método (Revolução 5.0): a IA
 > aposenta o trabalho-commodity, o especialista humano decide e assina, e cobra-se
 > por resultado. Não constrói "agentes autônomos" — usa autonomia limitada com
-> humano no ponto de responsabilidade. Modelo: Service-as-a-Software, com success
-> fee de 30% de equity quando subsidia o build.
+> humano no ponto de responsabilidade. Modelo: Service-as-a-Software.
 
 ## O que é
 - Fábrica de produto AI-first, não agência de automação nem "agente autônomo".
