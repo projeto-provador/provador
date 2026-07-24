@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CtaPiloto } from "@/components/sections/CtaPiloto";
 import { Oferta } from "@/components/sections/Oferta";
+import { Prova } from "@/components/sections/Prova";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Faq } from "@/components/ui/Faq";
@@ -110,11 +111,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/*
-        TODO(prova): seção Prova — aguarda números reais de 1–2 execuções
-        (pendência do owner, TASKS.md). Sem número real não se renderiza
-        promessa de resultado (CLAUDE.md §3.6).
-      */}
+      {/* ===== Prova — os 3 produtos ao vivo (Fosso G3, prova própria) ===== */}
+      <Prova />
 
       {/* ===== 3 caminhos por público — CONTENT.md §7 ===== */}
       <section aria-labelledby="caminhos" className="section-pad border-t border-border">

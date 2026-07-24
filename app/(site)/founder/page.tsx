@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { CtaPiloto } from "@/components/sections/CtaPiloto";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Card } from "@/components/ui/Card";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { NodeGlow } from "@/components/ui/NodeGlow";
 import { FOUNDER, IDEIAS_ANCORA, TESE_CONTRARIA } from "@/content/founder";
+import { PRODUTOS_PUBLICADOS } from "@/content/produtos/registry";
 import { personSchema } from "@/lib/schema";
 
 /* SEO-AGEO.md §5 — rota /founder */
@@ -70,10 +72,29 @@ export default function FounderPage() {
         </div>
       </section>
 
-      {/*
-        TODO(prova): prova social — eventos, publicações, projetos
-        (pendência do owner, TASKS.md). Sem fato real, a seção não renderiza.
-      */}
+      {/* ===== Prova de execução — os produtos ao vivo (evidência, não promessa) ===== */}
+      <section aria-labelledby="execucao" className="section-pad border-t border-border">
+        <div className="container-site">
+          <p className="eyebrow mb-4">O QUE JÁ ESTÁ NO AR</p>
+          <h2 id="execucao" className="max-w-[28ch] text-balance">
+            A tese vira produto — em produção, em verticais reguladas
+          </h2>
+          <ul className="mt-8 flex flex-wrap gap-3">
+            {PRODUTOS_PUBLICADOS.map((produto) => (
+              <li key={produto.slug}>
+                <Link
+                  href={`/produtos/${produto.slug}`}
+                  className="inline-flex rounded-sm border border-border px-4 py-2 text-sm font-medium text-text transition-colors hover:border-accent motion-reduce:transition-none"
+                >
+                  {produto.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          {/* TODO(prova): prova social — eventos, publicações, falas (aguarda o owner). */}
+          {/* TODO(copy): tom "yogue no corporativo" e POV aprofundado (aguarda o owner). */}
+        </div>
+      </section>
 
       <CtaPiloto />
     </>

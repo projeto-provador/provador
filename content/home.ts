@@ -41,6 +41,19 @@ export const TENSAO = {
 export const ARCO =
   "O software carrega o conhecimento e os limites. O humano carrega o julgamento e a assinatura.";
 
+/**
+ * Prova (Fosso G3 — prova própria). Surfacing a prova que já existe: 3 produtos
+ * em produção. Não é claim de outcome de cliente nomeado (isso segue TODO(prova)
+ * nas páginas de produto) — é capacidade demonstrada, verificável ao vivo.
+ */
+export const PROVA = {
+  eyebrow: "A PROVA",
+  titulo: "Não é promessa — está rodando",
+  texto:
+    "O método não é teoria: são três produtos em produção, cada um executando a mesma arquitetura — motor de IA na vazão, especialista no ponto de responsabilidade — numa vertical regulada diferente.",
+  // TODO(prova): substituir/complementar por outcome de cliente nomeado quando o owner fornecer.
+} as const;
+
 /** CONTENT.md §6 — Como funciona (5 passos) + bloco de lock-in */
 export const COMO_FUNCIONA = {
   titulo: "Como funciona",

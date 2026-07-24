@@ -91,6 +91,10 @@ Resolve o gap "oferta única para todos". Três degraus, do risco zero ao result
 
 Regra: nada de número de resultado inventado (§ prova > promessa). Financiamento em até 36x nos degraus pagos.
 
+### 5.2 Prova na home (Fosso G3 — prova própria)
+
+Seção "A prova / Não é promessa — está rodando" logo após "Como funciona": surfaça os **3 produtos ao vivo** (Auditoris, RiskFactor, Terra-Métrica) como prova de execução do método, em vez de depender só de dado de terceiros (Gartner/MIT). É capacidade demonstrada e verificável, não claim de outcome de cliente nomeado — este segue `TODO(prova)` nas páginas de produto até o owner fornecer. Mesma lógica no `/founder` ("O que já está no ar" → links para os produtos).
+
 ---
 
 ## 6. Como funciona (5 passos — Home / Método)
