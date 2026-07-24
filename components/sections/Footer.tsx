@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { Newsletter } from "@/components/sections/Newsletter";
 import { NodeGlow } from "@/components/ui/NodeGlow";
 import { NAV_ITEMS, SITE_NAME, SOCIAL, TESE, WHATSAPP } from "@/lib/site";
 
 export function Footer() {
   return (
     <footer className="border-t border-border">
+      <Newsletter />
       <div className="container-site grid gap-10 py-14 md:grid-cols-[1fr_auto_auto]">
         {/* Bloco de entidade — reforça AGEO (DESIGN.md §9) */}
         <div className="max-w-md">

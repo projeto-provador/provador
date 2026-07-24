@@ -91,6 +91,10 @@ Resolve o gap "oferta única para todos". Três degraus, do risco zero ao result
 
 Regra: nada de número de resultado inventado (§ prova > promessa). Financiamento em até 36x nos degraus pagos.
 
+### 5.1.1 Newsletter (rodapé, site-wide) — Fosso: ativo de audiência
+
+Banda de captura no topo do rodapé (Content Inc./Pulizzi): pega o email dos **95% out-of-market** para nutrir. Copy em `content/newsletter.ts`. Entrega por Resend (`RESEND_API_KEY`; notifica `projeto@quipeai.com.br` por inscrito — `TODO(owner)`: migrar para audience/ESP dedicado quando o volume justificar). **Cadência tese-mãe (ongoing, Fosso Parte 6):** cada seção **Extrapolação** dos produtos é semente de tese-mãe — 1 tese longa/mês → 8–12 peças → newsletter → aquece o funil.
+
 ### 5.2 Prova na home (Fosso G3 — prova própria)
 
 Seção "A prova / Não é promessa — está rodando" logo após "Como funciona": surfaça os **3 produtos ao vivo** (Auditoris, RiskFactor, Terra-Métrica) como prova de execução do método, em vez de depender só de dado de terceiros (Gartner/MIT). É capacidade demonstrada e verificável, não claim de outcome de cliente nomeado — este segue `TODO(prova)` nas páginas de produto até o owner fornecer. Mesma lógica no `/founder` ("O que já está no ar" → links para os produtos).
