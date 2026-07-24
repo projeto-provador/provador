@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AtSign } from "lucide-react";
 import { CtaPiloto } from "@/components/sections/CtaPiloto";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Card } from "@/components/ui/Card";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { NodeGlow } from "@/components/ui/NodeGlow";
-import { FOUNDER, IDEIAS_ANCORA, TESE_CONTRARIA } from "@/content/founder";
+import { FOUNDER, FOUNDER_REDES, IDEIAS_ANCORA, TESE_CONTRARIA } from "@/content/founder";
 import { PRODUTOS_PUBLICADOS } from "@/content/produtos/registry";
 import { personSchema } from "@/lib/schema";
+
+/* lucide-react não tem ícones de marca (Instagram/LinkedIn/...) — AtSign genérico para handle. */
 
 /* SEO-AGEO.md §5 — rota /founder */
 export const metadata: Metadata = {
@@ -33,13 +36,22 @@ export default function FounderPage() {
           <h1 className="max-w-[20ch] text-balance">{FOUNDER.nome}</h1>
           <p className="prose-width text-lg text-text-muted">{FOUNDER.bio}</p>
           {/* TODO(copy): tom "yogue no corporativo" — aguarda aprovação do owner (CONTENT §11) */}
-          <a
-            href={FOUNDER.instagram.url}
-            rel="me noopener"
-            className="text-sm font-medium text-accent-ink hover:underline"
-          >
-            Instagram · {FOUNDER.instagram.handle}
-          </a>
+
+          {/* Redes sociais — só perfis reais (CONTENT.md §11) */}
+          <nav aria-label="Redes sociais do founder" className="flex flex-wrap gap-3">
+            {FOUNDER_REDES.map((rede) => (
+              <a
+                key={rede.url}
+                href={rede.url}
+                target="_blank"
+                rel="me noopener"
+                className="inline-flex items-center gap-2 rounded-sm border border-border px-4 py-2 text-sm font-medium text-text transition-colors hover:border-accent motion-reduce:transition-none"
+              >
+                <AtSign aria-hidden className="size-4 text-accent-ink" />
+                {rede.nome} · {rede.handle}
+              </a>
+            ))}
+          </nav>
         </div>
       </section>
 

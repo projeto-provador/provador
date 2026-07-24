@@ -12,6 +12,14 @@ export const FOUNDER = {
   instagram: { handle: "@yo.gui.ia", url: "https://instagram.com/yo.gui.ia" },
 } as const;
 
+/**
+ * Redes sociais do founder — só perfis reais e ativos (nenhuma URL inventada).
+ * Adicionar aqui quando o owner confirmar handle/URL (LinkedIn, YouTube, X, TikTok...).
+ */
+export const FOUNDER_REDES = [
+  { nome: "Instagram", handle: "@yo.gui.ia", url: "https://instagram.com/yo.gui.ia" },
+] as const;
+
 /** Tese contrária — CONTENT.md §7 (ecossistema) + CLAUDE.md §2, literal */
 export const TESE_CONTRARIA = {
   eyebrow: "A TESE CONTRÁRIA",

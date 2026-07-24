@@ -1,4 +1,5 @@
 import type { FaqItem } from "@/components/ui/Faq";
+import { FOUNDER_REDES } from "@/content/founder";
 import { PRODUTOS_PUBLICADOS, type ProdutoMeta } from "@/content/produtos/registry";
 import { SITE_URL, SOCIAL } from "@/lib/site";
 
@@ -67,7 +68,7 @@ export function articleSchema(artigo: {
   };
 }
 
-/** Person — /founder (SEO-AGEO.md §6). */
+/** Person — /founder (SEO-AGEO.md §6). sameAs deriva de FOUNDER_REDES — 1 fonte só. */
 export const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -75,7 +76,7 @@ export const personSchema = {
   url: `${SITE_URL}/founder`,
   worksFor: { "@type": "Organization", name: "QuipeAI", url: SITE_URL },
   jobTitle: "Founder",
-  sameAs: ["https://instagram.com/yo.gui.ia"],
+  sameAs: FOUNDER_REDES.map((r) => r.url),
 } as const;
 
 /** BreadcrumbList — onde houver hierarquia (SEO-AGEO.md §6). */
