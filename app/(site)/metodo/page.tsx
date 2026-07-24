@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Check, X } from "lucide-react";
 import { CtaPiloto } from "@/components/sections/CtaPiloto";
+import { MetodoFluxo } from "@/components/sections/MetodoFluxo";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Card } from "@/components/ui/Card";
 import { Faq } from "@/components/ui/Faq";
@@ -141,20 +142,9 @@ export default function MetodoPage() {
         <div className="container-site">
           <p className="eyebrow mb-4">PASSO A PASSO</p>
           <h2 id="passos">{COMO_FUNCIONA.titulo}</h2>
-          <ol className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {COMO_FUNCIONA.passos.map((passo, i) => (
-              <li key={passo.titulo}>
-                <Card className="h-full">
-                  <span
-                    aria-hidden
-                    className="font-display text-sm font-bold text-accent-ink"
-                  >{`0${i + 1}`}</span>
-                  <h3 className="mt-2 text-lg">{passo.titulo}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-text-muted">{passo.texto}</p>
-                </Card>
-              </li>
-            ))}
-          </ol>
+          <div className="mt-10">
+            <MetodoFluxo passos={COMO_FUNCIONA.passos} />
+          </div>
         </div>
       </section>
 
