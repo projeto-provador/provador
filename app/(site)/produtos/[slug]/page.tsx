@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CtaPiloto } from "@/components/sections/CtaPiloto";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { Carousel } from "@/components/ui/Carousel";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { PRODUTOS_PUBLICADOS } from "@/content/produtos/registry";
 import { productSchema } from "@/lib/schema";
@@ -46,6 +47,9 @@ export default async function ProdutoPage({ params }: { params: Promise<Params> 
           />
           <h1 className="mt-6 max-w-[20ch] text-balance">{produto.title}</h1>
           {produto.vertical ? <p className="eyebrow mt-4">{produto.vertical}</p> : null}
+          {produto.imagens && produto.imagens.length > 0 ? (
+            <Carousel images={produto.imagens} className="mt-8" />
+          ) : null}
           <div className="prose-width mt-8 text-text-muted">
             <Corpo />
           </div>

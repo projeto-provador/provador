@@ -5,6 +5,8 @@
  * produtos ao vivo), mais casos reais de resultado de cliente — fornecidos
  * pelo owner (2026-07-24), anonimizados (sem nome de cliente).
  */
+import type { CarouselImage } from "@/components/ui/Carousel";
+
 export type ProdutoMeta = {
   slug: string;
   title: string;
@@ -13,6 +15,11 @@ export type ProdutoMeta = {
   vertical?: string;
   /** URL do produto ao vivo, quando houver. */
   url?: string;
+  /**
+   * Screenshots para o carrossel (em /public/produtos/<slug>/).
+   * Vazio até o owner enviar os arquivos — o carrossel não renderiza sem imagem.
+   */
+  imagens?: ReadonlyArray<CarouselImage>;
   published: boolean;
   publishedAt?: string;
 };
