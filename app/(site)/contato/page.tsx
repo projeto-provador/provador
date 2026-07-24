@@ -28,7 +28,8 @@ export default function ContatoPage() {
           </p>
 
           {/* O que acontece depois — reduz o atrito de preencher o form */}
-          <dl className="mt-2 flex flex-col gap-4">
+          <h2 className="mt-2 text-xl">{PROCESSO.titulo}</h2>
+          <dl className="flex flex-col gap-4">
             {PROCESSO.passos.map((passo) => (
               <div key={passo.titulo}>
                 <dt className="font-display font-semibold">{passo.titulo}</dt>

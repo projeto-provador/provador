@@ -8,7 +8,7 @@ export const HERO = {
   eyebrow: "FÁBRICA DE PRODUTO AI-FIRST",
   h1: "IA que assume o resultado — com um humano que decide e assina.",
   subtitle:
-    "Não vendemos software nem “agentes autônomos” que prometem e somem. Instalamos um método: a IA faz o trabalho-commodity, o especialista carrega o julgamento e a assinatura, e você paga por resultado.",
+    "Você tem mais demanda do que consegue entregar — e a assinatura é sempre sua. A QuipeAI instala o método que faz o seu especialista render por dez: a IA assume o trabalho-commodity, você carrega o julgamento e a assinatura, e paga por resultado.",
   ctaPrimary: { label: "Peça um piloto", href: "/contato" },
   ctaSecondary: { label: "Veja como o método funciona", href: "/metodo" },
 } as const;

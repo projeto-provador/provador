@@ -73,11 +73,23 @@ Nota: cinco sins = ICP. Regulação é só onde a pergunta 3 já é lei — por 
 
 **Eyebrow:** `FÁBRICA DE PRODUTO AI-FIRST`
 **H1:** **IA que assume o resultado — com um humano que decide e assina.**
-**Subtítulo:** Não vendemos software nem "agentes autônomos" que prometem e somem. Instalamos um método: a IA faz o trabalho-commodity, o especialista carrega o julgamento e a assinatura, e você paga por resultado.
+**Subtítulo (cliente-herói — atualizado 2026-07-24):** Você tem mais demanda do que consegue entregar — e a assinatura é sempre sua. A QuipeAI instala o método que faz o seu especialista render por dez: a IA assume o trabalho-commodity, você carrega o julgamento e a assinatura, e paga por resultado.
 **CTA primário:** Peça um piloto
 **CTA secundário:** Veja como o método funciona
 
+> Nota (Fosso, G2 — StoryBrand): o subtítulo lidera com o problema do **herói (o cliente)**; a QuipeAI é o **guia**. O H1 é mantido literal por ser a frase-âncora de entidade (meta/OG/llms).
+
 Variação curta do subtítulo (se o layout pedir): *A IA aposenta o trabalho-commodity. O especialista assina. Você paga por resultado.*
+
+### 5.1 Escada de ofertas (Home + `/contato`) — Fosso G1 / Hormozi
+
+Resolve o gap "oferta única para todos". Três degraus, do risco zero ao resultado:
+
+1. **Diagnóstico com IA — gratuito.** A IA mapeia onde o commodity consome o especialista e quanto dá para aposentar. Sem compromisso. *(lead magnet; motor automatizado é `TODO(feature)`, hoje o CTA leva à conversa.)*
+2. **Piloto de resultado — "se não entregar, você não paga".** Um caso real, uma semana, especialista assina. O risco é da QuipeAI até a entrega.
+3. **Operação por resultado — cobrança por resultado + financiamento em até 36x.** O motor assume a vazão em produção; cobra-se pelo desfecho, não por licença.
+
+Regra: nada de número de resultado inventado (§ prova > promessa). Financiamento em até 36x nos degraus pagos.
 
 ---
 

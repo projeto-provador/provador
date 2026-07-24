@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { CtaPiloto } from "@/components/sections/CtaPiloto";
+import { Oferta } from "@/components/sections/Oferta";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Faq } from "@/components/ui/Faq";
@@ -139,6 +140,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ===== Escada de ofertas — Fosso G1 (isca → entrada → core) ===== */}
+      <Oferta />
 
       {/* ===== FAQ — CONTENT.md §12 (schema FAQPage 1:1 acima) ===== */}
       <section aria-labelledby="faq" className="section-pad border-t border-border">
