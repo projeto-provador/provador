@@ -145,6 +145,20 @@ export function LeadForm() {
         {fieldError("erro-mensagem", errors.mensagem?.message)}
       </div>
 
+      {/* SRA — a pergunta que enxerga o dark funnel (Fosso, Pilar C). Opcional. */}
+      <div>
+        <label htmlFor="comoChegou" className="mb-1.5 block text-sm font-medium">
+          Como você chegou até aqui? <span className="font-normal text-text-muted">(opcional)</span>
+        </label>
+        <input
+          id="comoChegou"
+          autoComplete="off"
+          placeholder="Instagram, indicação, uma IA citou a QuipeAI, evento…"
+          className={inputCls}
+          {...register("comoChegou")}
+        />
+      </div>
+
       {/* Honeypot — invisível para humanos, irresistível para bots */}
       <div aria-hidden="true" className="absolute -left-[9999px]">
         <label htmlFor="website">Website</label>

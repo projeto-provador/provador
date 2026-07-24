@@ -3,11 +3,13 @@
 import { leadSchema, type LeadResult } from "@/lib/lead";
 
 /**
- * Entrega do lead — o destino (Resend vs webhook de CRM) é pendência do owner
- * (TASKS.md 0.11/0.12). Ambos os adaptadores estão prontos; ativa-se por env:
- *   RESEND_API_KEY + LEAD_TO_EMAIL  → email via Resend
- *   LEAD_WEBHOOK_URL                → POST JSON no CRM
+ * Entrega do lead. Ativa-se por env:
+ *   RESEND_API_KEY   → email via Resend (destino default: projeto@quipeai.com.br)
+ *   LEAD_WEBHOOK_URL → POST JSON no CRM
+ * Basta setar RESEND_API_KEY no Vercel para o lead chegar — o destino já tem default.
  */
+const LEAD_TO_EMAIL_DEFAULT = "projeto@quipeai.com.br";
+
 export async function submitLead(input: unknown): Promise<LeadResult> {
   const parsed = leadSchema.safeParse(input);
   if (!parsed.success) {
@@ -26,11 +28,12 @@ export async function submitLead(input: unknown): Promise<LeadResult> {
     empresa: lead.empresa ?? "",
     segmento: lead.segmento,
     mensagem: lead.mensagem,
+    comoChegou: lead.comoChegou ?? "(não informado)",
     origem: "quipeai.com.br/contato",
   };
 
   try {
-    if (process.env.RESEND_API_KEY && process.env.LEAD_TO_EMAIL) {
+    if (process.env.RESEND_API_KEY) {
       const res = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
@@ -38,8 +41,9 @@ export async function submitLead(input: unknown): Promise<LeadResult> {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: process.env.LEAD_FROM_EMAIL ?? "site@quipeai.com.br",
-          to: process.env.LEAD_TO_EMAIL,
+          from: process.env.LEAD_FROM_EMAIL ?? "QuipeAI Site <site@quipeai.com.br>",
+          to: process.env.LEAD_TO_EMAIL ?? LEAD_TO_EMAIL_DEFAULT,
+          reply_to: lead.email,
           subject: `[Lead ${lead.segmento}] ${lead.nome}`,
           text: Object.entries(payload)
             .map(([k, v]) => `${k}: ${v}`)

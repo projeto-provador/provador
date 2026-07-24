@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MessageCircle } from "lucide-react";
 import { NodeGlow } from "@/components/ui/NodeGlow";
-import { CONTATO } from "@/content/contato";
+import { CONTATO, PROCESSO } from "@/content/contato";
+import { WHATSAPP } from "@/lib/site";
 import { LeadForm } from "./LeadForm";
 
 /* SEO-AGEO.md §5 — rota /contato */
@@ -24,7 +26,27 @@ export default function ContatoPage() {
           <p className="prose-width text-lg text-text-muted">
             {CONTATO.corpo} <strong className="text-text">{CONTATO.destaque}</strong>
           </p>
-          {/* TODO(copy): "O que acontece depois" — 2–3 passos do processo pós-lead (SPEC §6.3) */}
+
+          {/* O que acontece depois — reduz o atrito de preencher o form */}
+          <dl className="mt-2 flex flex-col gap-4">
+            {PROCESSO.passos.map((passo) => (
+              <div key={passo.titulo}>
+                <dt className="font-display font-semibold">{passo.titulo}</dt>
+                <dd className="mt-1 text-sm leading-relaxed text-text-muted">{passo.texto}</dd>
+              </div>
+            ))}
+          </dl>
+
+          {/* WhatsApp — canal direto de baixo atrito */}
+          <a
+            href={WHATSAPP.url}
+            target="_blank"
+            rel="noopener"
+            className="mt-2 inline-flex items-center gap-2 rounded-sm border border-border px-4 py-2.5 text-sm font-semibold text-text transition-colors hover:border-accent motion-reduce:transition-none"
+          >
+            <MessageCircle aria-hidden className="size-4 text-accent-ink" />
+            Prefere WhatsApp? {WHATSAPP.numero}
+          </a>
         </div>
 
         <LeadForm />

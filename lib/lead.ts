@@ -8,6 +8,8 @@ export const leadSchema = z.object({
   // TODO(spec): default do segmento sem ?p= — assumido "cliente" até o owner confirmar
   segmento: z.enum(["cliente", "investidor", "ecossistema"]),
   mensagem: z.string().min(10, "Conta o caso em pelo menos uma frase"),
+  /** SRA (Self-Reported Attribution) — a camada 0 de medição do dark funnel. */
+  comoChegou: z.string().optional(),
   /** Honeypot — humano não vê nem preenche. */
   website: z.string().max(0).optional().or(z.literal("")),
 });

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { NodeGlow } from "@/components/ui/NodeGlow";
-import { NAV_ITEMS, SITE_NAME, SOCIAL, TESE } from "@/lib/site";
+import { NAV_ITEMS, SITE_NAME, SOCIAL, TESE, WHATSAPP } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -33,6 +33,14 @@ export function Footer() {
             className="text-text-muted transition-colors hover:text-text motion-reduce:transition-none"
           >
             Instagram · {SOCIAL.instagram.handle}
+          </a>
+          <a
+            href={WHATSAPP.url}
+            target="_blank"
+            rel="noopener"
+            className="text-text-muted transition-colors hover:text-text motion-reduce:transition-none"
+          >
+            WhatsApp · {WHATSAPP.numero}
           </a>
         </nav>
 

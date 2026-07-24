@@ -25,3 +25,10 @@ export const NAV_ITEMS: ReadonlyArray<{ href: string; label: string }> = [
 export const SOCIAL = {
   instagram: { handle: "@quipe.ai", url: "https://instagram.com/quipe.ai" },
 } as const;
+
+/** WhatsApp de contato direto — canal de conversão de baixo atrito. */
+export const WHATSAPP = {
+  numero: "+55 11 93084-5999",
+  /** wa.me com mensagem pré-preenchida (o texto reduz o atrito da 1ª mensagem). */
+  url: "https://wa.me/5511930845999?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20QuipeAI%20e%20quero%20conversar%20sobre%20um%20piloto.",
+} as const;

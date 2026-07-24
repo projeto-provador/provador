@@ -116,6 +116,10 @@ Micro-copy: Na maioria das verticais que importam, agente autônomo é a arquite
 **Corpo:** Me dá um caso real — em uma semana mostro o resultado, com o seu especialista assinando. **Se não entregar, você não paga.**
 **Botão:** Começar o piloto → `/contato`
 
+**O que acontece depois (no `/contato`):** (1) conversa de diagnóstico em até 1 dia útil; (2) piloto sobre um caso real, com o especialista revisando e assinando; (3) você decide — entregou, cobrança por resultado **com financiamento em até 36x**; não entregou, você não paga.
+
+**Canais diretos:** WhatsApp **+55 11 93084-5999** (`wa.me/5511930845999`) no `/contato` e no rodapé. O form pergunta **"Como você chegou até aqui?"** (SRA — Self-Reported Attribution, camada 0 de medição do dark funnel; ver Fosso de Marketing, Pilar C). Entrega do lead: Resend (basta setar `RESEND_API_KEY` no Vercel; destino default `projeto@quipeai.com.br`).
+
 ---
 
 ## 9. Jargões da marca (usar; são âncoras de memória e de AGEO)
