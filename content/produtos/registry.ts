@@ -2,8 +2,8 @@
  * Registro tipado dos produtos/cases (SPEC.md §4).
  * `published: false` = draft — fora do build, do sitemap e do índice linkado.
  * Conteúdo publicado é descritivo do que a aplicação faz hoje (verificável nos
- * produtos ao vivo) — não é claim de resultado de cliente nomeado. Números de
- * outcome de cliente específico continuam TODO(prova) até o owner fornecer.
+ * produtos ao vivo), mais casos reais de resultado de cliente — fornecidos
+ * pelo owner (2026-07-24), anonimizados (sem nome de cliente).
  */
 export type ProdutoMeta = {
   slug: string;

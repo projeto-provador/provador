@@ -6,7 +6,13 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Card } from "@/components/ui/Card";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { NodeGlow } from "@/components/ui/NodeGlow";
-import { FOUNDER, FOUNDER_REDES, IDEIAS_ANCORA, TESE_CONTRARIA } from "@/content/founder";
+import {
+  FOUNDER,
+  FOUNDER_REDES,
+  IDEIAS_ANCORA,
+  TESE_CONTRARIA,
+  TRAJETORIA,
+} from "@/content/founder";
 import { PRODUTOS_PUBLICADOS } from "@/content/produtos/registry";
 import { personSchema } from "@/lib/schema";
 
@@ -52,6 +58,27 @@ export default function FounderPage() {
               </a>
             ))}
           </nav>
+        </div>
+      </section>
+
+      {/* ===== Trajetória — autoridade em números reais ===== */}
+      <section aria-labelledby="trajetoria" className="section-pad border-t border-border">
+        <div className="container-site">
+          <p className="eyebrow mb-4">{TRAJETORIA.eyebrow}</p>
+          <h2 id="trajetoria" className="max-w-[28ch] text-balance">
+            {TRAJETORIA.titulo}
+          </h2>
+          <p className="prose-width mt-3 text-text-muted">{TRAJETORIA.intro}</p>
+          <dl className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {TRAJETORIA.dados.map((dado) => (
+              <Card key={dado.valor}>
+                <dt className="font-display text-2xl font-extrabold text-accent-ink">
+                  {dado.valor}
+                </dt>
+                <dd className="mt-2 text-sm leading-relaxed text-text-muted">{dado.texto}</dd>
+              </Card>
+            ))}
+          </dl>
         </div>
       </section>
 
@@ -103,7 +130,7 @@ export default function FounderPage() {
               </li>
             ))}
           </ul>
-          {/* TODO(prova): prova social — eventos, publicações, falas (aguarda o owner). */}
+          {/* TODO(prova): prova social adicional — eventos, publicações, falas (aguarda o owner). */}
           {/* TODO(copy): tom "yogue no corporativo" e POV aprofundado (aguarda o owner). */}
         </div>
       </section>

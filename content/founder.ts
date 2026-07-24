@@ -20,6 +20,32 @@ export const FOUNDER_REDES = [
   { nome: "Instagram", handle: "@yo.gui.ia", url: "https://instagram.com/yo.gui.ia" },
 ] as const;
 
+/** Trajetória — autoridade do founder, números reais (owner, 2026-07-24). */
+export const TRAJETORIA = {
+  eyebrow: "TRAJETÓRIA",
+  titulo: "Visão de produto, não de feature",
+  intro: "Não é a primeira vez, nem uma aposta isolada — é o padrão que sustenta o método.",
+  dados: [
+    {
+      valor: "42+",
+      texto: "projetos de produto construídos em 6 meses.",
+    },
+    {
+      valor: "240h → 3h",
+      texto:
+        "redução real de tempo de equipe no mercado jurídico regulado — o padrão que o método replica (ver RiskFactor).",
+    },
+    {
+      valor: "36+",
+      texto: "empresas como sócio ou investidor.",
+    },
+    {
+      valor: "500+",
+      texto: "empresas atendidas em 28 anos, em diversos ramos de atividade.",
+    },
+  ],
+} as const;
+
 /** Tese contrária — CONTENT.md §7 (ecossistema) + CLAUDE.md §2, literal */
 export const TESE_CONTRARIA = {
   eyebrow: "A TESE CONTRÁRIA",

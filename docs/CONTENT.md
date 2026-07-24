@@ -97,7 +97,12 @@ Banda de captura no topo do rodapé (Content Inc./Pulizzi): pega o email dos **9
 
 ### 5.2 Prova na home (Fosso G3 — prova própria)
 
-Seção "A prova / Não é promessa — está rodando" logo após "Como funciona": surfaça os **3 produtos ao vivo** (Auditoris, RiskFactor, Terra-Métrica) como prova de execução do método, em vez de depender só de dado de terceiros (Gartner/MIT). É capacidade demonstrada e verificável, não claim de outcome de cliente nomeado — este segue `TODO(prova)` nas páginas de produto até o owner fornecer. Mesma lógica no `/founder` ("O que já está no ar" → links para os produtos).
+Seção "A prova / Não é promessa — está rodando" logo após "Como funciona": surfaça os **3 produtos ao vivo** (Auditoris, RiskFactor, Terra-Métrica) como prova de execução do método, em vez de depender só de dado de terceiros (Gartner/MIT). Mesma lógica no `/founder` ("O que já está no ar" → links para os produtos).
+
+**Casos reais de resultado (owner, 2026-07-24) — anonimizados, sem nome de cliente, ao fim de "A prova" em cada produto:**
+- **Auditoris:** na semana de lançamento, controller de empresa em auditoria PCAOB usou por <30min e achou 16 anomalias a corrigir, economizando horas de resolução interna.
+- **RiskFactor:** cliente reduziu de 240h de equipe júnior/estagiários para 3h de aplicação, processando 20+ formulários S-1/F-1 reais.
+- **Terra-Métrica:** 15 mil ha processados em ~7min (satélite → relatório para agrônomo/agrimensor), tempo de laudo de dias para poucas horas.
 
 ---
 
@@ -166,7 +171,12 @@ Micro-copy: Na maioria das verticais que importam, agente autônomo é a arquite
 - Tese contrária: por que "humano no ponto de responsabilidade" > "agente autônomo".
 - Ponto de vista: 3–5 ideias-âncora (podem virar artigos em `/conteudo`).
 - Tom: pode incluir o "yogue no corporativo" **se o owner aprovar** — `TODO(copy)`.
-- Prova social: eventos, publicações, projetos (`TODO(prova)`).
+- Prova social: eventos, publicações, projetos (`TODO(prova)` — adicional; a trajetória em números já está publicada, ver §11.1).
+- **Redes sociais:** bloco dedicado, só perfis reais (`FOUNDER_REDES` em `content/founder.ts`) — hoje só Instagram `@yo.gui.ia`. `personSchema.sameAs` deriva da mesma lista.
+
+### 11.1 Trajetória (autoridade em números — owner, 2026-07-24)
+
+Seção logo após o hero, antes da tese contrária: 42+ projetos de produto em 6 meses · redução real de 240h→3h de equipe no mercado jurídico regulado (mesmo padrão do case RiskFactor) · 36+ empresas como sócio ou investidor · 500+ empresas atendidas em 28 anos, diversos ramos. Fecha a lógica "visão de produto, não de feature".
 
 ---
 
