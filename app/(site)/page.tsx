@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { CountUp } from "@/components/ui/CountUp";
 import { Faq } from "@/components/ui/Faq";
+import { HeroNodes } from "@/components/ui/HeroNodes";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { NodeGlow } from "@/components/ui/NodeGlow";
 import { Reveal } from "@/components/ui/Reveal";
@@ -26,8 +27,9 @@ export default function HomePage() {
       <JsonLd data={faqPageSchema(FAQ)} />
 
       {/* ===== Hero — CONTENT.md §5 ===== */}
-      <section className="section-pad">
-        <div className="container-site flex flex-col items-start gap-6">
+      <section className="relative overflow-hidden section-pad">
+        <HeroNodes className="pointer-events-none absolute -right-24 top-1/2 hidden aspect-square h-[130%] max-h-none -translate-y-1/2 opacity-80 lg:block" />
+        <div className="container-site relative flex flex-col items-start gap-6">
           <p className="eyebrow flex items-center gap-3">
             <NodeGlow size={8} />
             {HERO.eyebrow}

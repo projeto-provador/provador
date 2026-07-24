@@ -107,3 +107,26 @@
 @utility prose-width {
   max-width: 66ch;
 }
+
+/* Halo de nós do hero (assinatura da marca) — anima só com motion permitido */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes qi-orbit {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes qi-orbit-rev {
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+  @keyframes qi-ring-pulse {
+    0%,
+    100% {
+      opacity: 0.28;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+}
