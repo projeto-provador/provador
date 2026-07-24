@@ -1,0 +1,32 @@
+{/*
+  IMAGENS PENDENTES (aguardando upload como arquivo):
+  1. Tela "Generate Risk Analysis": upload de documento institucional,
+     AI Upload & Analyze, campos bloqueados preenchidos pela IA.
+  2. "Benchmark Intelligence & Document Discovery": 20 peers estratégicos
+     identificados, status de localização dos filings SEC (10-K/S-1/F-1).
+  3. "Risk Analysis Report": sumário executivo, peer group, 20 risk factors
+     extraídos, 100% de cobertura, mapa de frequência de risco.
+  Ao receber os arquivos: salvar em public/produtos/rfee/ e trocar os
+  blocos de nota abaixo por <Image> (next/image).
+*/}
+
+## O problema
+
+Toda oferta pública (S-1/F-1) ou 10-K exige uma seção de risk factors — e montá-la bem depende de comparar o que dezenas de pares do setor já divulgaram. Hoje isso é trabalho manual de advogado/analista: ler filings de concorrentes um por um no SEC EDGAR, extrair os fatores de risco, cruzar com o perfil da própria empresa. Volume alto, prazo curto, pouco espaço para julgamento estratégico.
+
+## Como o método se aplica
+
+O RiskFactor automatiza a parte-commodity da pesquisa e devolve o julgamento ao especialista:
+
+- **Perfil por IA** — a partir do documento institucional da empresa (ou seu ticker), a IA extrai o perfil, classifica o setor e sugere os peers automaticamente.
+- **Descoberta de peers e filings** — identifica os concorrentes estratégicos (ex.: para uma empresa de fertilizantes, sugeriu Mosaic, CF Industries, ICL Group, Nutrien e outros) e localiza os filings SEC correspondentes (10-K, S-1, F-1) já prontos para análise.
+- **Extração de risk factors** — varre o peer group e extrai os risk factors distintos já divulgados pelo setor, com cobertura auditável (ex.: 20 riscos extraídos, 100% de cobertura sobre o corpus coletado).
+- **Auditoria VDR** — cruza os achados com os documentos do data room do próprio cliente, sinalizando o que já está coberto e o que falta endereçar.
+- **Exportação pronta para o filing** — relatório em HTML no padrão EDGAR, além de JSON e CSV, e PDF para revisão interna.
+- **O especialista decide e assina** — a IA entrega o levantamento comparativo; o advogado/analista decide o que entra no filing final.
+
+## A prova
+
+Rodando hoje em produção (riskfactorsreport.com): num relatório de exemplo do setor de fertilizantes, a plataforma identificou 20 peers estratégicos, localizou os filings SEC de 13 deles automaticamente, e extraiu 20 risk factors distintos do peer group com 100% de cobertura sobre o corpus analisado — exportável em HTML/JSON/CSV/PDF.
+
+*TODO(prova): números de resultado de um cliente nomeado (tempo economizado por oferta, filings processados) — aguardando o owner.*

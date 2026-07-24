@@ -52,14 +52,15 @@ Legenda esforço (E): S ≤1h · M ≤4h · L = quebrar em subtarefas.
 
 - [x] **1.1 · /metodo** — definição answer-first + 4 perguntas (checklist) + arco + moat + modelo de receita + FAQ (schema) (`SPEC §2`, `CONTENT §4,§6,§10`). `P1 · L`
   - feito: answer-first + 4 perguntas + passos + arco + moat + receita + FAQ/schema. (2026-07-13)
+  - expandido (2026-07-24): ICP completo do `QuipeAI_ICP_Core_Deck` — ICP em uma frase, 5 perguntas (era 4), ICP em 4 camadas, anti-perfil, scoring (ICP-A/B/Fora), ondas de entrada, categoria e como validamos. Deliberadamente fora: success fee de 30% equity (removido a pedido do owner) e menção nominal a concorrente (generalizada).
   - atualizado (2026-07-13): removida toda menção a success fee / 30% de equity do modelo de receita, a pedido do owner — cobrança agora é só "por resultado".
   - DoD: FAQPage schema casa com o FAQ visível; resposta extraível no topo; AA nos dois temas.
 - [x] **1.2 · /founder** — bio + tese contrária + ponto de vista + schema Person (`SPEC §3`, `CONTENT §11`). `TODO(copy)` do owner. `P1 · M`
   - feito: bio factual + tese contrária + ideias-âncora + schema Person; tom "yogue" e prova social aguardam owner (TODO). (2026-07-13)
 - [x] **1.3 · /produtos (índice)** — grid enquadrando produtos como execuções do método; schema ItemList (`SPEC §4`). `P1 · M`
   - feito: grid enquadrando execuções do método; ItemList só com publicados; cards sem link até haver prova. (2026-07-13)
-- [ ] **1.4 · /produtos/[slug] (MDX)** — 1–2 produtos com problema/método/**prova**(`TODO(prova)`)/CTA; frontmatter tipado; schema Product (`SPEC §4`). `P1 · L`
-  - parcial (2026-07-13): pipeline MDX + registry tipado + schema Product prontos; 3 drafts aguardam problema/método/PROVA do owner (published:false).
+- [x] **1.4 · /produtos/[slug] (MDX)** — 1–2 produtos com problema/método/**prova**(`TODO(prova)`)/CTA; frontmatter tipado; schema Product (`SPEC §4`). `P1 · L`
+  - feito (2026-07-24): 3 produtos publicados (Auditoris, RiskFactor, Terra-Métrica) com problema/método/prova reais, verificados nos apps ao vivo (auditoris.app, riskfactorsreport.com, terra-metrica.com). Prova = capacidade demonstrada do produto (contagens, scores reais dos apps), não outcome de cliente nomeado — isso continua `TODO(prova)` em cada MDX, aguardando o owner. Screenshots das aplicações pendentes: chegaram coladas no chat, sem arquivo — aguardando upload como anexo para salvar em `public/produtos/<slug>/`.
 - [x] **1.5 · FAQ global + schema** — componente `Faq` reutilizável (abre sem JS) nas páginas-chave (`DESIGN §9`, `SEO-AGEO §6`). `P1 · M`
   - feito: componente Faq (details/summary, abre sem JS) + faqPageSchema reutilizados em / e /metodo. (2026-07-13)
 - [x] **1.6 · OG por página** — gerar OG das novas rotas (método/founder/produtos). `P1 · S`

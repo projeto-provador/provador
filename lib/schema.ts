@@ -37,6 +37,7 @@ export function productSchema(produto: ProdutoMeta) {
     description: produto.summary ?? "",
     url: `${SITE_URL}/produtos/${produto.slug}`,
     brand: { "@type": "Organization", name: "QuipeAI", url: SITE_URL },
+    ...(produto.url ? { sameAs: [produto.url] } : {}),
   };
 }
 

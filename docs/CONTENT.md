@@ -23,6 +23,8 @@
 
 Versão de uma linha (para meta/hero): **"IA que assume o resultado — com um humano que decide e assina."**
 
+**A categoria (deck ICP §10, generalizado):** a QuipeAI não é "software house" nem "services-as-software". O consenso do mercado é autonomia total — tratar o humano como falha não paga e tirá-lo da jogada. A QuipeAI inverte isso: autonomia limitada, com o especialista no ponto de responsabilidade. A assinatura dele é o produto, durável por regulação (EU AI Act, CFC, reguladores financeiros). *"A máquina não vai presa — então alguém tem que assinar."*
+
 ---
 
 ## 3. O arco (frase-âncora — usar literal)
@@ -33,16 +35,35 @@ Fecha palestra, fecha página, fecha proposta. Não parafrasear.
 
 ---
 
-## 4. As 4 perguntas do ICP (checklist de qualificação — `/metodo`)
+## 4. O ICP (checklist de qualificação — `/metodo`)
 
-Título: **"Este negócio é para a QuipeAI?"** — se responde "sim" às quatro, é ICP.
+> Fonte: `QuipeAI_ICP_Core_Deck` (owner, 2026-07-24). Duas seções do deck foram deliberadamente **não** trazidas para o site: o modelo de receita com success fee de 30% de equity (removido do site a pedido do owner em 2026-07-13 — ver §10) e a menção nominal a um concorrente na seção "categoria" (generalizada, sem citar nome de terceiro).
 
-1. **Um especialista caro faz trabalho-commodity substancial** (ou mantém um time de juniores caro, com tempo longo até a primeira entrega)?
-2. **A curadoria desse especialista é o selo de qualidade que o cliente paga?**
-3. **Errar tem consequência que o especialista sempre assume** (autuação, laudo, processo, responsabilidade)?
-4. **Mais vazão vira mais faturamento/margem/EBITDA?**
+**O ICP em uma frase:** o cliente do método é o dono de uma operação intensiva em especialista — com demanda represada, que hoje se afoga na parte-commodity ou paga uma pirâmide de juniores lenta e cara — e a assinatura é sempre dele.
 
-Nota de enquadramento: regulado é a **onda 1** (responsabilidade é lei, começo mais fácil); especialista não-regulado vem nas ondas seguintes. Tese larga, alvo estreito — uma vertical-cunha por vez.
+**Título do checklist:** "Este negócio é para a QuipeAI?" — cinco perguntas, cinco sins.
+
+1. **Há um especialista caro fazendo trabalho-commodity** — ou um time de juniores caro e lento até a 1ª entrega, com alto custo de treinamento e risco de perder o investimento (saída) ou de não adaptação?
+2. **A curadoria do especialista é o selo de qualidade que o cliente paga?**
+3. **Errar tem consequência que o especialista sempre assume?**
+4. **Mais vazão vira mais faturamento, margem e EBITDA?**
+5. **O gargalo é capacidade, não demanda** — recusa projetos ou tem fila? Sem este sim, não é ICP-A.
+
+Nota: cinco sins = ICP. Regulação é só onde a pergunta 3 já é lei — por isso a onda 1 começa nela.
+
+**ICP em 4 camadas:**
+- *Firmográfico* — operação intensiva em especialista (contábil, jurídico, perícia, engenharia, compliance, ESG); já tem pirâmide (sênior + juniores) ou sênior sobrecarregado; ~5–200 pessoas; Brasil-first, ponte global.
+- *Tecnográfico* — commodity feito à mão; ferramentas legadas + planilhas; tempo longo até a 1ª entrega; usa ChatGPT solto, sem confiar para assinar.
+- *Comportamental/intenção* — gatilho A: demanda represada; gatilho B: Reforma CBS/IBS 2026–27, EU AI Act ago/2026, temporada de auditoria; gatilho C: custo de treinar juniores + risco de perder o investimento ou de não adaptação.
+- *JTBD* — "Tenho mais demanda do que entrego. Ou eu me afogo no commodity, ou treino juniores caros e lentos — que ainda posso perder ou que não se adaptam — e a assinatura é sempre minha."
+
+**Anti-perfil (quem não é cliente):** boutique de estilo de vida; gargalo de demanda; só quer cortar custo; curadoria irrelevante; resultado subjetivo; quer autonomia total (tira o humano da jogada).
+
+**Scoring:** ICP-A (foco total — capacidade represada + curadoria valorizada + resultado mensurável) · ICP-B (nutrir — passa nas perguntas mas gargalo/resultado incerto) · Fora (não perseguir).
+
+**Ondas de entrada:** Onda 1 — auditoria contábil-IA, Brasil (responsabilidade é lei/CFC, gatilho CBS/IBS 2026–27, menor atrito). Onda 2 — não regulado, resultado mensurável (engenharia, perícia, compliance, ESG/MRV). Onda 3 — resultado semi-subjetivo (consultoria, arquitetura, agências; híbrido retainer + prêmio).
+
+**Como validamos antes de escalar:** entrevistas reais na vertical-cunha; a pergunta que separa cliente de curioso — "Quantos projetos você recusou nos últimos meses por falta de mão?" — só escala com demanda represada e disposição a pagar por resultado confirmadas num piloto pago, com métrica auditável.
 
 ---
 

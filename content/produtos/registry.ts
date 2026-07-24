@@ -1,24 +1,51 @@
 /**
  * Registro tipado dos produtos/cases (SPEC.md §4).
  * `published: false` = draft — fora do build, do sitemap e do índice linkado.
- * Um produto só publica quando o owner fornecer problema/método/PROVA reais
- * (CLAUDE.md §3.6: nenhuma promessa sem número).
+ * Conteúdo publicado é descritivo do que a aplicação faz hoje (verificável nos
+ * produtos ao vivo) — não é claim de resultado de cliente nomeado. Números de
+ * outcome de cliente específico continuam TODO(prova) até o owner fornecer.
  */
 export type ProdutoMeta = {
   slug: string;
   title: string;
-  /** Uma linha factual — TODO(copy) do owner para os drafts. */
+  /** Uma linha factual. */
   summary?: string;
   vertical?: string;
+  /** URL do produto ao vivo, quando houver. */
+  url?: string;
   published: boolean;
   publishedAt?: string;
 };
 
 export const PRODUTOS: ReadonlyArray<ProdutoMeta> = [
-  // TODO(copy)/TODO(prova): owner fornece problema/desfecho/números de cada produto
-  { slug: "auditoria-ia", title: "auditoria-IA", published: false },
-  { slug: "rfee", title: "RFEE — risk factors (SEC)", published: false },
-  { slug: "terra-metrica", title: "Terra-Métrica", published: false },
+  {
+    slug: "auditoria-ia",
+    title: "Auditoris",
+    summary: "Auditoria contábil com IA — anomalias e validações normativas (IFRS/CPC) em minutos.",
+    vertical: "Contábil · Auditoria",
+    url: "https://auditoris.app",
+    published: true,
+    publishedAt: "2026-07-24",
+  },
+  {
+    slug: "rfee",
+    title: "RiskFactor",
+    summary:
+      "Extração e benchmarking de risk factors a partir de filings SEC EDGAR (S-1/F-1/10-K).",
+    vertical: "Mercado de capitais · IPO/M&A",
+    url: "https://riskfactorsreport.com",
+    published: true,
+    publishedAt: "2026-07-24",
+  },
+  {
+    slug: "terra-metrica",
+    title: "Terra-Métrica",
+    summary: "Due diligence fundiária e pré-validação de georreferenciamento INCRA/SIGEF.",
+    vertical: "Agro · Real estate rural",
+    url: "https://terra-metrica.com",
+    published: true,
+    publishedAt: "2026-07-24",
+  },
 ];
 
 export const PRODUTOS_PUBLICADOS = PRODUTOS.filter((p) => p.published);

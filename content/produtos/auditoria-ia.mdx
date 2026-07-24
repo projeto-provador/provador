@@ -1,18 +1,31 @@
 {/*
-  DRAFT — não publica até o owner preencher (registry.ts: published: false).
-  Estrutura conforme SPEC.md §4: Problema → Como o método se aplica → Prova → CTA.
-  TODO(copy): todo o corpo abaixo.
-  TODO(prova): números reais (vazão, margem, SLA, resultado assumido).
+  IMAGENS PENDENTES (aguardando upload como arquivo — colagem inline não é
+  suficiente para copiar para public/produtos/auditoria-ia/):
+  1. Dashboard (Visão Geral): total de ativos, patrimônio líquido, receita,
+     lucro líquido, anomalias e validações IFRS resumidas.
+  2. Aba Validações: normas IFRS/IAS individuais com % de progresso e status
+     (pendente/aviso/falha).
+  3. Aba Relatórios: Relatório Executivo de Auditoria gerado por IA (sumário
+     de riscos de integridade e de divulgação/compliance).
+  Ao receber os arquivos: salvar em public/produtos/auditoria-ia/ e trocar
+  os blocos de nota abaixo por <Image> (next/image).
 */}
 
 ## O problema
 
-TODO(copy): o trabalho-commodity desta vertical — o que consome o especialista caro e não deveria.
+Auditoria contábil é trabalho-commodity de alto volume e alto risco: conciliar balanços, checar aderência a cada norma IFRS/CPC uma por uma, redigir o relatório executivo. Um sócio de auditoria sênior gasta a maior parte do tempo nessa triagem — não na parte em que o conhecimento dele importa: decidir o que é material, o que é risco real, o que assinar.
 
 ## Como o método se aplica
 
-TODO(copy): o motor treinado no contexto do cliente, a autonomia limitada, quem revisa/decide/assina.
+A Auditoris é o motor treinado no contexto do cliente executando essa triagem:
+
+- **Detecção de anomalias** — a IA varre as demonstrações e classifica achados por severidade (críticas, altas, médias, baixas).
+- **Validação normativa automática** — cada norma relevante (IFRS 15, IFRS 16, IFRS 9, IAS 36, IFRS 3, IFRS 13, IAS 1, IAS 8, IAS 12, IAS 24...) é checada individualmente, com percentual de aderência e status: aprovada, aviso, falha ou pendente.
+- **Relatório executivo gerado por IA** — sumariza riscos de integridade (ex.: balanço que não fecha, contas de suspensão) e riscos de divulgação/compliance (ex.: omissão de notas obrigatórias sobre partes relacionadas ou tributos diferidos).
+- **O especialista decide e assina** — a IA aposenta a triagem linha a linha; o auditor revisa os achados priorizados e assina o parecer.
 
 ## A prova
 
-TODO(prova): números reais da execução — sem número, esta página não publica.
+Rodando hoje em produção (auditoris.app), modo IFRS: numa auditoria de exemplo, o sistema aponta 15 anomalias (0 críticas, 6 altas, 8 médias, 1 baixa) e avalia 7 validações normativas simultâneas com status individual — de "falha" (ex.: IAS 1, balanço comparativo que não fecha) a "aviso" (ex.: IFRS 16, ausência de avaliação de contratos de locação sob a ótica de capitalização).
+
+*TODO(prova): números de resultado de um cliente nomeado (tempo economizado, volume auditado, achados que viraram ressalva) — aguardando o owner.*

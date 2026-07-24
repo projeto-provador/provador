@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Check } from "lucide-react";
+import { Check, X } from "lucide-react";
 import { CtaPiloto } from "@/components/sections/CtaPiloto";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Card } from "@/components/ui/Card";
@@ -7,14 +7,26 @@ import { Faq } from "@/components/ui/Faq";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { NodeGlow } from "@/components/ui/NodeGlow";
 import { ARCO, COMO_FUNCIONA, FAQ } from "@/content/home";
-import { DEFINICAO, MOAT, QUATRO_PERGUNTAS, RECEITA } from "@/content/metodo";
+import {
+  ANTI_PERFIL,
+  CAMADAS_ICP,
+  CATEGORIA,
+  DEFINICAO,
+  ICP_FRASE,
+  MOAT,
+  ONDAS,
+  PERGUNTAS_ICP,
+  RECEITA,
+  SCORING,
+  VALIDACAO,
+} from "@/content/metodo";
 import { faqPageSchema } from "@/lib/schema";
 
 /* SEO-AGEO.md §5 — rota /metodo */
 export const metadata: Metadata = {
   title: "O Método (Revolução 5.0) — QuipeAI",
   description:
-    "Como funciona a IA com autonomia limitada e humano no ponto de responsabilidade. As 4 perguntas que definem se seu negócio é ICP.",
+    "Como funciona a IA com autonomia limitada e humano no ponto de responsabilidade. As perguntas que definem se seu negócio é ICP.",
   alternates: { canonical: "/metodo" },
 };
 
@@ -37,14 +49,24 @@ export default function MetodoPage() {
         </div>
       </section>
 
-      {/* ===== As 4 perguntas do ICP — CONTENT.md §4 ===== */}
+      {/* ===== ICP em uma frase ===== */}
+      <section aria-label="O ICP em uma frase" className="border-t border-border">
+        <div className="container-site py-14">
+          <p className="eyebrow mb-4">{ICP_FRASE.eyebrow}</p>
+          <p className="prose-width font-display text-2xl font-semibold leading-snug text-balance">
+            {ICP_FRASE.texto}
+          </p>
+        </div>
+      </section>
+
+      {/* ===== As perguntas do ICP ===== */}
       <section aria-labelledby="icp" className="section-pad border-t border-border">
         <div className="container-site">
-          <p className="eyebrow mb-4">AS 4 PERGUNTAS</p>
-          <h2 id="icp">{QUATRO_PERGUNTAS.titulo}</h2>
-          <p className="mt-3 text-text-muted">{QUATRO_PERGUNTAS.intro}</p>
+          <p className="eyebrow mb-4">O FILTRO DE QUALIFICAÇÃO</p>
+          <h2 id="icp">{PERGUNTAS_ICP.titulo}</h2>
+          <p className="mt-3 text-text-muted">{PERGUNTAS_ICP.intro}</p>
           <ol className="mt-8 grid gap-4 md:grid-cols-2">
-            {QUATRO_PERGUNTAS.perguntas.map((pergunta, i) => (
+            {PERGUNTAS_ICP.perguntas.map((pergunta, i) => (
               <li key={pergunta}>
                 <Card className="flex h-full gap-4">
                   <span className="mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-accent text-accent-contrast">
@@ -56,7 +78,61 @@ export default function MetodoPage() {
               </li>
             ))}
           </ol>
-          <p className="prose-width mt-6 text-sm text-text-muted">{QUATRO_PERGUNTAS.nota}</p>
+          <p className="prose-width mt-6 text-sm text-text-muted">{PERGUNTAS_ICP.nota}</p>
+        </div>
+      </section>
+
+      {/* ===== ICP em 4 camadas ===== */}
+      <section aria-labelledby="camadas" className="section-pad border-t border-border">
+        <div className="container-site">
+          <p className="eyebrow mb-4">{CAMADAS_ICP.eyebrow}</p>
+          <h2 id="camadas">{CAMADAS_ICP.titulo}</h2>
+          <dl className="mt-10 grid gap-4 md:grid-cols-2">
+            {CAMADAS_ICP.camadas.map((camada) => (
+              <Card key={camada.nome}>
+                <dt className="font-display text-lg font-bold">{camada.nome}</dt>
+                <dd className="mt-2 leading-relaxed text-text-muted">{camada.texto}</dd>
+              </Card>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      {/* ===== Anti-perfil ===== */}
+      <section aria-labelledby="anti-perfil" className="section-pad border-t border-border">
+        <div className="container-site">
+          <p className="eyebrow mb-4">{ANTI_PERFIL.eyebrow}</p>
+          <h2 id="anti-perfil">{ANTI_PERFIL.titulo}</h2>
+          <p className="mt-3 text-text-muted">{ANTI_PERFIL.intro}</p>
+          <ul className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {ANTI_PERFIL.itens.map((item) => (
+              <li key={item.nome}>
+                <Card className="flex h-full gap-3">
+                  <X aria-hidden className="mt-0.5 size-5 shrink-0 text-text-subtle" />
+                  <div>
+                    <p className="font-display font-semibold">{item.nome}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-text-muted">{item.texto}</p>
+                  </div>
+                </Card>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ===== Scoring ===== */}
+      <section aria-labelledby="scoring" className="section-pad border-t border-border">
+        <div className="container-site">
+          <p className="eyebrow mb-4">{SCORING.eyebrow}</p>
+          <h2 id="scoring">{SCORING.titulo}</h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {SCORING.faixas.map((faixa) => (
+              <Card key={faixa.nome} className="h-full">
+                <p className="font-display font-bold text-accent-ink">{faixa.nome}</p>
+                <p className="mt-2 text-sm leading-relaxed text-text-muted">{faixa.texto}</p>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -82,6 +158,29 @@ export default function MetodoPage() {
         </div>
       </section>
 
+      {/* ===== As ondas de entrada ===== */}
+      <section aria-labelledby="ondas" className="section-pad border-t border-border">
+        <div className="container-site">
+          <p className="eyebrow mb-4">{ONDAS.eyebrow}</p>
+          <h2 id="ondas">{ONDAS.titulo}</h2>
+          <p className="mt-3 text-text-muted">{ONDAS.intro}</p>
+          <ol className="mt-8 grid gap-4 md:grid-cols-3">
+            {ONDAS.ondas.map((onda, i) => (
+              <li key={onda.nome}>
+                <Card className="h-full">
+                  <span
+                    aria-hidden
+                    className="font-display text-sm font-bold text-accent-ink"
+                  >{`0${i + 1}`}</span>
+                  <p className="mt-2 font-display font-semibold">{onda.nome}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-text-muted">{onda.texto}</p>
+                </Card>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
       {/* ===== Arco — frase-âncora literal (CONTENT.md §3) ===== */}
       <section aria-label="Arco da marca" className="border-t border-border">
         <div className="container-site py-16">
@@ -93,9 +192,9 @@ export default function MetodoPage() {
         </div>
       </section>
 
-      {/* ===== Moat + modelo de receita ===== */}
+      {/* ===== Moat + categoria + modelo de receita ===== */}
       <section aria-labelledby="moat" className="section-pad border-t border-border">
-        <div className="container-site grid gap-8 md:grid-cols-2">
+        <div className="container-site grid gap-8 md:grid-cols-3">
           <Card className="h-full">
             <p className="eyebrow">{MOAT.eyebrow}</p>
             <h2 id="moat" className="mt-3 text-2xl">
@@ -104,9 +203,28 @@ export default function MetodoPage() {
             <p className="mt-4 leading-relaxed text-text-muted">{MOAT.corpo}</p>
           </Card>
           <Card className="h-full">
+            <p className="eyebrow">{CATEGORIA.eyebrow}</p>
+            <h2 className="mt-3 text-2xl">{CATEGORIA.titulo}</h2>
+            <p className="mt-4 leading-relaxed text-text-muted">{CATEGORIA.corpo}</p>
+            <p className="mt-4 font-display italic text-text">“{CATEGORIA.frase}”</p>
+          </Card>
+          <Card className="h-full">
             <p className="eyebrow">{RECEITA.eyebrow}</p>
             <h2 className="mt-3 text-2xl">{RECEITA.titulo}</h2>
             <p className="mt-4 leading-relaxed text-text-muted">{RECEITA.corpo}</p>
+          </Card>
+        </div>
+      </section>
+
+      {/* ===== Como validamos ===== */}
+      <section aria-labelledby="validacao" className="section-pad border-t border-border">
+        <div className="container-site">
+          <Card>
+            <p className="eyebrow">{VALIDACAO.eyebrow}</p>
+            <h2 id="validacao" className="mt-3 text-2xl">
+              {VALIDACAO.titulo}
+            </h2>
+            <p className="prose-width mt-4 leading-relaxed text-text-muted">{VALIDACAO.corpo}</p>
           </Card>
         </div>
       </section>
