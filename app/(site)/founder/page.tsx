@@ -4,8 +4,10 @@ import { AtSign } from "lucide-react";
 import { CtaPiloto } from "@/components/sections/CtaPiloto";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Card } from "@/components/ui/Card";
+import { CountUp } from "@/components/ui/CountUp";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { NodeGlow } from "@/components/ui/NodeGlow";
+import { Reveal } from "@/components/ui/Reveal";
 import {
   FOUNDER,
   FOUNDER_REDES,
@@ -70,13 +72,15 @@ export default function FounderPage() {
           </h2>
           <p className="prose-width mt-3 text-text-muted">{TRAJETORIA.intro}</p>
           <dl className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {TRAJETORIA.dados.map((dado) => (
-              <Card key={dado.valor}>
-                <dt className="font-display text-2xl font-extrabold text-accent-ink">
-                  {dado.valor}
-                </dt>
-                <dd className="mt-2 text-sm leading-relaxed text-text-muted">{dado.texto}</dd>
-              </Card>
+            {TRAJETORIA.dados.map((dado, i) => (
+              <Reveal key={dado.valor} delay={i * 80}>
+                <Card>
+                  <dt className="font-display text-2xl font-extrabold text-accent-ink">
+                    <CountUp text={dado.valor} />
+                  </dt>
+                  <dd className="mt-2 text-sm leading-relaxed text-text-muted">{dado.texto}</dd>
+                </Card>
+              </Reveal>
             ))}
           </dl>
         </div>

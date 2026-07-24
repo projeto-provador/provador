@@ -4,9 +4,11 @@ import { Oferta } from "@/components/sections/Oferta";
 import { Prova } from "@/components/sections/Prova";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
+import { CountUp } from "@/components/ui/CountUp";
 import { Faq } from "@/components/ui/Faq";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { NodeGlow } from "@/components/ui/NodeGlow";
+import { Reveal } from "@/components/ui/Reveal";
 import { ARCO, CAMINHOS, COMO_FUNCIONA, FAQ, HERO, TENSAO } from "@/content/home";
 import { faqPageSchema } from "@/lib/schema";
 
@@ -51,18 +53,21 @@ export default function HomePage() {
             {TENSAO.claim}
           </h2>
           <dl className="mt-10 grid gap-4 sm:grid-cols-3">
-            {TENSAO.dados.map((dado) => (
-              <Card key={dado.valor}>
-                <dt className="sr-only">{dado.fonte}</dt>
-                <dd>
-                  <span className="block font-display text-3xl font-extrabold text-accent-ink">
-                    {dado.valor}
-                  </span>
-                  <span className="mt-2 block text-sm leading-relaxed text-text-muted">
-                    {dado.texto}
-                  </span>
-                </dd>
-              </Card>
+            {TENSAO.dados.map((dado, i) => (
+              <Reveal key={dado.valor} delay={i * 80}>
+                <Card>
+                  <dt className="sr-only">{dado.fonte}</dt>
+                  <dd>
+                    <CountUp
+                      text={dado.valor}
+                      className="block font-display text-3xl font-extrabold text-accent-ink"
+                    />
+                    <span className="mt-2 block text-sm leading-relaxed text-text-muted">
+                      {dado.texto}
+                    </span>
+                  </dd>
+                </Card>
+              </Reveal>
             ))}
           </dl>
         </div>
