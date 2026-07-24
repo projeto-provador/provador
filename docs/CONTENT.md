@@ -25,6 +25,8 @@ Versão de uma linha (para meta/hero): **"IA que assume o resultado — com um h
 
 **A categoria (deck ICP §10, generalizado):** a QuipeAI não é "software house" nem "services-as-software". O consenso do mercado é autonomia total — tratar o humano como falha não paga e tirá-lo da jogada. A QuipeAI inverte isso: autonomia limitada, com o especialista no ponto de responsabilidade. A assinatura dele é o produto, durável por regulação (EU AI Act, CFC, reguladores financeiros). *"A máquina não vai presa — então alguém tem que assinar."*
 
+**Extrapolação (nas páginas de produto):** cada produto tem, no fim da página, uma seção "Extrapolação — o mesmo motor em outras áreas reguladas". É a prova de que o núcleo é método replicável, não um app: expõe-se o padrão reutilizável do produto e listam-se novas áreas reguladas onde ele se aplica trocando só o ruleset/corpus. Regra de ouro: são **extrapolações do método, não produtos anunciados** — cada bullet fecha lembrando que nova vertical só abre com piloto medido; nada de número ou case inventado. Mapa atual: **Auditoris** → fiscal-tributário (CBS/IBS), LGPD, Bacen/SUSEP, glosas ANS. **RiskFactor** → ofertas CVM/B3, ESG (CSRD/ISSB), due diligence M&A, editais. **Terra-Métrica** → MRV de carbono, barragens (InSAR/ANM), licenciamento/CAR, seguro rural paramétrico.
+
 ---
 
 ## 3. O arco (frase-âncora — usar literal)

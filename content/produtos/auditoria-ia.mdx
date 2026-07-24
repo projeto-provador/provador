@@ -29,3 +29,14 @@ A Auditoris é o motor treinado no contexto do cliente executando essa triagem:
 Rodando hoje em produção (auditoris.app), modo IFRS: numa auditoria de exemplo, o sistema aponta 15 anomalias (0 críticas, 6 altas, 8 médias, 1 baixa) e avalia 7 validações normativas simultâneas com status individual — de "falha" (ex.: IAS 1, balanço comparativo que não fecha) a "aviso" (ex.: IFRS 16, ausência de avaliação de contratos de locação sob a ótica de capitalização).
 
 *TODO(prova): números de resultado de um cliente nomeado (tempo economizado, volume auditado, achados que viraram ressalva) — aguardando o owner.*
+
+## Extrapolação — o mesmo motor em outras áreas reguladas
+
+O padrão reutilizável não é "auditoria contábil". É **varredura documental + checagem automática contra um corpo normativo + achados classificados por severidade + parecer que um profissional habilitado assina.** Onde existe um ruleset escrito e um responsável nomeado, troca-se só o ruleset:
+
+- **Auditoria fiscal-tributária (Reforma CBS/IBS 2026–27)** — a mesma checagem, com o ruleset da nova legislação tributária no lugar do IFRS.
+- **Compliance LGPD** — varre contratos, políticas e fluxos de dados contra a lei e classifica exposições; a assinatura é do DPO/jurídico.
+- **Conformidade regulatória (Bacen · SUSEP)** — operações e apólices checadas contra as normas do regulador financeiro ou de seguros.
+- **Auditoria médica / glosas** — faturas e prontuários hospitalares contra as regras da ANS e das tabelas de convênio.
+
+*Extrapolações do método, não produtos anunciados: cada nova vertical só abre com um piloto medido (ver [o método](/metodo)).*

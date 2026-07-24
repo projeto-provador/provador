@@ -30,3 +30,14 @@ O RiskFactor automatiza a parte-commodity da pesquisa e devolve o julgamento ao 
 Rodando hoje em produção (riskfactorsreport.com): num relatório de exemplo do setor de fertilizantes, a plataforma identificou 20 peers estratégicos, localizou os filings SEC de 13 deles automaticamente, e extraiu 20 risk factors distintos do peer group com 100% de cobertura sobre o corpus analisado — exportável em HTML/JSON/CSV/PDF.
 
 *TODO(prova): números de resultado de um cliente nomeado (tempo economizado por oferta, filings processados) — aguardando o owner.*
+
+## Extrapolação — o mesmo motor em outras áreas reguladas
+
+O padrão reutilizável não é "risk factors da SEC". É **extração estruturada de um corpus documental extenso + benchmark contra pares + geração do documento no formato exigido pelo regulador, com o especialista decidindo o que entra.** O corpus e o formato de saída mudam; o motor, não:
+
+- **Ofertas CVM / B3** — fatores de risco de prospectos locais, o equivalente brasileiro do S-1, contra pares do setor.
+- **Relatórios ESG (CSRD · ISSB)** — benchmark de disclosures de sustentabilidade contra o que o setor já divulga.
+- **Due diligence de M&A** — extração de riscos de data rooms e comparação com o padrão de mercado.
+- **Editais e licitações públicas** — mapeamento de exigências e cláusulas de risco antes de decidir participar.
+
+*Extrapolações do método, não produtos anunciados: cada nova vertical só abre com um piloto medido (ver [o método](/metodo)).*
