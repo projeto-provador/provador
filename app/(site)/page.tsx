@@ -28,7 +28,9 @@ export default function HomePage() {
 
       {/* ===== Hero — CONTENT.md §5 ===== */}
       <section className="relative overflow-hidden section-pad">
-        <HeroNodes className="pointer-events-none absolute -right-24 top-1/2 hidden aspect-square h-[130%] max-h-none -translate-y-1/2 opacity-80 lg:block" />
+        {/* Visível em todos os breakpoints: no mobile sangra para fora à direita,
+            atrás do texto, com opacidade baixa para não competir com a headline. */}
+        <HeroNodes className="pointer-events-none absolute -right-[45%] -top-16 aspect-square w-[125%] max-w-none opacity-45 sm:-right-[28%] sm:top-0 sm:w-[85%] sm:opacity-60 lg:-right-24 lg:top-1/2 lg:w-[70%] lg:-translate-y-1/2 lg:opacity-85" />
         <div className="container-site relative flex flex-col items-start gap-6">
           <p className="eyebrow flex items-center gap-3">
             <NodeGlow size={8} />
